@@ -218,6 +218,8 @@ nav.scrolled {
   font-family: var(--font-serif);
   font-weight: 400;
   color: var(--gold);
+  display: block;
+  margin-top: 0.18em;
 }
 .hero-bottom {
   display: flex;
