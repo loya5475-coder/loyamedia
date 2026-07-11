@@ -94,6 +94,12 @@
           </div>
         </div>
 
+        <!-- Founder note -->
+        <div class="founder-note reveal">
+          <p>"Every request on this page comes straight to me. I read it, study your site myself, and write your samples personally — no ticket queue, no junior handoff. You'll hear back from me the same day."</p>
+          <div class="founder-sig">— Jose Loya, Founder</div>
+        </div>
+
         <!-- What to include -->
         <div style="margin-top:48px;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px;">
           <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">What to include</p>
@@ -104,7 +110,7 @@
             </div>
             <div style="font-size:0.82rem;color:var(--muted);display:flex;gap:10px;">
               <span style="color:var(--gold);flex-shrink:0;">–</span>
-              Which 3 pieces of content you want rewritten
+              Which pieces you want rewritten — or let us pick for you
             </div>
             <div style="font-size:0.82rem;color:var(--muted);display:flex;gap:10px;">
               <span style="color:var(--gold);flex-shrink:0;">–</span>
@@ -149,16 +155,15 @@
             </div>
 
             <div class="form-group">
-              <label for="service">What are you most interested in? *</label>
-              <select id="service" name="service" required>
-                <option value="" disabled selected>Select a service…</option>
+              <label for="service">What are you most interested in?</label>
+              <select id="service" name="service">
+                <option value="not-sure" selected>Not sure — you pick what will help most</option>
                 <option value="product-copy">Product Copywriting</option>
                 <option value="email">Email Campaigns</option>
                 <option value="social">Social Media Content</option>
                 <option value="blog">Blog Writing</option>
                 <option value="full-store">Full Store Rewrite</option>
                 <option value="multiple">Multiple Services</option>
-                <option value="not-sure">Not sure — just want to see the samples</option>
               </select>
             </div>
 
@@ -168,8 +173,8 @@
             </div>
 
             <div class="form-group">
-              <label for="message">What 3 things do you want rewritten? *</label>
-              <textarea id="message" name="message" placeholder="Tell us what you'd like us to rewrite. Paste your current copy, share product names, or describe the emails or social posts you want improved. The more context, the better." required></textarea>
+              <label for="message">What do you want rewritten? (optional)</label>
+              <textarea id="message" name="message" placeholder="Paste your current copy, share product names, or describe what you want improved. Not sure? Leave this blank — we'll study your site and pick the 3 pieces where better copy will make the biggest difference."></textarea>
             </div>
 
             <button type="submit" class="cta-pill cta-pill-dark form-submit" style="width:100%;justify-content:center;border-radius:8px;padding:16px 28px;font-size:0.88rem;">

@@ -1254,3 +1254,42 @@ select option { background: var(--bg); }
   border-top: 1px solid var(--border);
 }
 .work-why b { color: #B8BCD0; font-weight: 600; }
+
+/* ── Niche columns (Who We Write For) ───────── */
+.niche-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+.niche-cols .service-col:nth-child(3) { border-right: none; padding-right: 0; }
+@media (max-width: 1000px) {
+  .niche-cols { grid-template-columns: 1fr; }
+  .niche-cols .service-col { border-right: none !important; border-top: 1px solid var(--border); padding-left: 0 !important; padding-right: 0 !important; }
+  .niche-cols .service-col:first-child { border-top: none; }
+}
+
+/* ── Founder note (Contact) ─────────────────── */
+.founder-note {
+  margin-top: 40px;
+  padding: 28px 32px;
+  border-left: 3px solid var(--gold);
+  background: var(--surface);
+  border-radius: 0 12px 12px 0;
+}
+.founder-note p {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.8;
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+.founder-note .founder-sig {
+  margin-top: 14px;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
