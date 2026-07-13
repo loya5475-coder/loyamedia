@@ -31,17 +31,44 @@
 
 /* ── Reset ──────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; background: var(--bg); }
 body {
-  background: var(--bg);
+  background: transparent;
   color: var(--text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  background-image:
-    linear-gradient(rgba(22,24,31,0.032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(22,24,31,0.032) 1px, transparent 1px);
-  background-size: 80px 80px;
+}
+
+/* ── Ambient Background ─────────────────────── */
+/* Soft aurora washes that drift slowly behind the whole site */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -12%;
+  background:
+    radial-gradient(42% 36% at 10% 6%,  rgba(232,181,84,0.20), transparent 68%),
+    radial-gradient(34% 30% at 90% 10%, rgba(79,95,232,0.12),  transparent 68%),
+    radial-gradient(38% 34% at 85% 80%, rgba(226,142,90,0.12), transparent 68%),
+    radial-gradient(30% 26% at 6% 88%,  rgba(79,95,232,0.08),  transparent 68%);
+  pointer-events: none;
+  z-index: -1;
+  animation: aurora-drift 36s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift {
+  from { transform: translate3d(-1.5%, -1%, 0) scale(1); }
+  to   { transform: translate3d(1.5%, 1.5%, 0) scale(1.05); }
+}
+/* Fine paper grain over everything — premium print texture */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 2000;
 }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
@@ -176,6 +203,21 @@ nav.scrolled {
   justify-content: flex-end;
   padding: 0 0 64px;
   position: relative;
+  overflow: hidden;
+}
+/* Giant ghosted quotation mark — the watermark of a words business */
+.hero::before {
+  content: '\201C';
+  position: absolute;
+  top: -6%;
+  right: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(22rem, 36vw, 44rem);
+  line-height: 1;
+  color: rgba(178,127,38,0.10);
+  pointer-events: none;
+  z-index: 0;
 }
 .hero-top {
   display: flex;
@@ -400,6 +442,19 @@ section.tight { padding: 80px 0; }
   border-bottom: 1px solid var(--border);
   padding: 120px 0;
   position: relative;
+  overflow: hidden;
+}
+/* Oversized ghosted brand sparkle floating behind the statement */
+.statement-sec::after {
+  content: '\2726';
+  position: absolute;
+  right: -2%;
+  top: 50%;
+  transform: translateY(-50%) rotate(14deg);
+  font-size: clamp(14rem, 24vw, 24rem);
+  line-height: 1;
+  color: rgba(79,95,232,0.07);
+  pointer-events: none;
 }
 .statement-sec::before {
   content: '';
