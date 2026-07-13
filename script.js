@@ -3,35 +3,42 @@
    ============================================================ */
 
 // ── Custom Cursor ────────────────────────────
-const dot  = document.createElement('div');
-const ring = document.createElement('div');
-dot.className  = 'cursor-dot';
-ring.className = 'cursor-ring';
-document.body.appendChild(dot);
-document.body.appendChild(ring);
+// Only on precise-pointer (mouse) devices. On touch/coarse pointers we skip it
+// entirely and let the native cursor/tap behaviour stand. The body only gets
+// `custom-cursor` (which hides the native cursor via CSS) once this runs, so if
+// the script fails to load the native cursor is never hidden.
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  const dot  = document.createElement('div');
+  const ring = document.createElement('div');
+  dot.className  = 'cursor-dot';
+  ring.className = 'cursor-ring';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+  document.body.classList.add('custom-cursor');
 
-let mouseX = 0, mouseY = 0;
-let ringX  = 0, ringY  = 0;
+  let mouseX = 0, mouseY = 0;
+  let ringX  = 0, ringY  = 0;
 
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  dot.style.left = mouseX + 'px';
-  dot.style.top  = mouseY + 'px';
-});
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top  = mouseY + 'px';
+  });
 
-(function animateRing() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  ring.style.left = ringX + 'px';
-  ring.style.top  = ringY + 'px';
-  requestAnimationFrame(animateRing);
-})();
+  (function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top  = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  })();
 
-document.querySelectorAll('a, button, [data-hover]').forEach(el => {
-  el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
-  el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
-});
+  document.querySelectorAll('a, button, [data-hover]').forEach(el => {
+    el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
+    el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
+  });
+}
 
 // ── Nav Scroll ───────────────────────────────
 const nav = document.querySelector('nav');
@@ -62,16 +69,23 @@ if (toggle) {
 }
 
 // ── Scroll Reveal ─────────────────────────────
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+// Fallback: if IntersectionObserver is unavailable, show everything immediately
+// so content is never left stuck at opacity:0.
+const revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  revealEls.forEach(el => revealObserver.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('visible'));
+}
 
 // ── Active Nav Link ───────────────────────────
 const page = window.location.pathname.split('/').pop() || 'index.html';

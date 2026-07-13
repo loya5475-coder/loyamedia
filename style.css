@@ -38,7 +38,6 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  cursor: none;
   background-image:
     linear-gradient(rgba(238,238,242,0.022) 1px, transparent 1px),
     linear-gradient(90deg, rgba(238,238,242,0.022) 1px, transparent 1px);
@@ -77,6 +76,11 @@ img { display: block; max-width: 100%; }
 .cursor-dot.hover  { width: 10px; height: 10px; }
 .cursor-ring.hover { width: 52px; height: 52px; border-color: rgba(232,181,84,0.5); }
 @media (hover: none) { .cursor-dot, .cursor-ring { display: none; } }
+/* Hide the native cursor ONLY once JS has installed the custom one, and only
+   on precise-pointer devices. Without JS, the normal cursor always shows. */
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor { cursor: none; }
+}
 
 /* ── Container ──────────────────────────────── */
 .container {
@@ -969,16 +973,32 @@ select option { background: var(--bg); }
 .form-success p { font-size: 0.88rem; color: var(--muted); }
 
 /* ── Scroll Reveal ──────────────────────────── */
+/* Content is only hidden when JS is available to reveal it (html.js). With no
+   JS, every .reveal element renders normally instead of staying invisible. */
 .reveal {
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.js .reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
 }
 .reveal.delay-1 { transition-delay: 0.1s; }
 .reveal.delay-2 { transition-delay: 0.2s; }
 .reveal.delay-3 { transition-delay: 0.3s; }
 .reveal.delay-4 { transition-delay: 0.4s; }
 .reveal.visible  { opacity: 1; transform: none; }
+
+/* ── Reduced Motion ─────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1 !important; transform: none !important; }
+}
 
 /* ── Divider ────────────────────────────────── */
 .divider { height: 1px; background: var(--border); }
