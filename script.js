@@ -113,6 +113,10 @@ if (form) {
       if (res.ok) {
         form.style.display = 'none';
         document.getElementById('form-success').style.display = 'block';
+        // GA4 conversion: a visitor requested their 3 free samples
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', { form_name: 'free_samples' });
+        }
       } else {
         throw new Error();
       }
