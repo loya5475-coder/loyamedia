@@ -78,6 +78,41 @@ This is a ceremony, not an email. Do it in person or on a call — never just te
 
 ---
 
+## Managing the $50/mo subscriptions (recurring billing + cancellations)
+
+### Set up recurring payments with Stripe (recommended)
+
+1. Create a free account at stripe.com (no monthly fee; they take 2.9% + 30¢ per charge — so ~$1.75 of each $50).
+2. Products → add **"Website Hosting & Care — $50/month"** as a recurring price.
+3. Create a **Payment Link** for it. That gives you a URL (and a QR code) you can text to the client at handoff — they enter their card once on their phone, and Stripe auto-charges them every month forever. No invoicing, no chasing.
+4. Install the **Stripe mobile app** — you get a push notification on every successful payment and every failure, and you can see all your subscribers in one list. That list IS your hosting business.
+5. Alternative: PayPal Subscriptions works the same way if a client insists on PayPal (you already take PayPal). **Zelle/Venmo can't do auto-recurring** — fine for the $800 build, wrong for hosting; you'd be chasing 30 people by text every month.
+
+**Failed cards (this is most "cancellations"):** Stripe automatically retries failed charges over ~2 weeks and emails the client to update their card. If it still fails, you text them personally: *"Hey [Name], your card on file expired — here's the link to update it so the site stays up."* Most churn is expired cards, not unhappy clients. Handle it warmly and fast.
+
+### Cancellations: the notify-and-save flow
+
+At your scale, a cancellation won't come through a portal — **it comes as a text to you**: "hey I want to cancel the website thing." That's actually better than any automated popup, because the save conversation is yours. (Stripe also lets clients cancel via its billing portal if you enable it — if you do, turn on **cancellation reasons** in portal settings and you'll see why they left in the dashboard, plus get the app notification. For now, keep cancellation manual: they have to contact you, which guarantees you get your second chance.)
+
+**The save script — always ask WHY before you cancel anything:**
+
+> "No problem at all — I'll take care of it. Before I shut it down, can I ask what's going on? Just want to make sure I didn't drop the ball somewhere."
+
+Then match the real reason:
+
+| They say | You offer |
+|---|---|
+| "Money's tight right now" | **Pause plan:** "Let's not kill the site — I'll drop you to $25/mo for the next 3 months, site stays live, we revisit in the fall." (A paused client at $25 beats a cancelled one at $0, and they almost always return to full price.) Or: "Prepay the year at $500 and save $100." |
+| "I'm not getting calls from it" | "Fair — let me earn it. This week, free: I'll optimize your Google Business Profile and set up a review QR card for your crew. Give it 60 days; if it's still doing nothing, I'll cancel it myself and refund the last month." Then send them the visit/ranking screenshot monthly so they SEE the value. |
+| "I'm retiring / closing the business" | Let them go graciously. Transfer the domain to them, thank them, ask for a Google review and one referral on the way out. |
+| "My nephew's taking it over" | "Totally fine — the domain's yours, I'll transfer everything over. And if it ever gets to be a hassle, one text and I'll take it back on." Door stays open; half come back. |
+
+**Rules for the save:**
+- Keeping a client is 10× cheaper than cold-calling a new one. Always make ONE genuine save offer.
+- Two offers max, then let go warmly. Begging costs you referrals in a small market; grace earns them.
+- Log every cancellation reason (even in a notes app). Three people saying "not getting calls" means your Day-30 value texts aren't happening — fix the system, not the client.
+- Never hold the site or domain hostage. Ever. Word travels fast between contractors — your reputation IS your pipeline.
+
 ## What the $50/month covers (say this list out loud when selling it)
 
 > "Hosting, your domain renewal, security and the SSL certificate, keeping it fast, small changes whenever you need them — and me. You text me, it gets handled. No call centers, no tickets."
