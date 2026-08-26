@@ -2,7 +2,7 @@
 
 | Metric | Now | 30-day target |
 |---|---|---|
-| Prospects researched | 7 | 300 |
+| Prospects researched | 15 | 300 |
 | Rewrites completed | 3 | 300 |
 | Emails sent | 0 | 300 |
 | Replies | 0 | 25 |
