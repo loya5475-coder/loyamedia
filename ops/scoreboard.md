@@ -3,11 +3,13 @@
 | Metric | Now | 30-day target |
 |---|---|---|
 | Prospects researched | 15 | 300 |
-| Rewrites completed | 3 | 300 |
-| Emails sent | 0 | 300 |
+| Rewrites completed | 5 | 300 |
+| **Emails sent** | **3** | 300 |
 | Replies | 0 | 25 |
 | Paid clients | 0 | 3–4 |
 | **Revenue collected** | **$0** | **$1,500–$3,500** |
 
-Updated at the end of every working session. Numbers are pulled from the
-Gmail account and `ops/prospects.csv`, not estimated.
+Money-out to date: **$0.00**
+
+Updated at the end of every working session. Numbers come from the Gmail
+account, PayPal, and `ops/prospects.csv` — never estimated.

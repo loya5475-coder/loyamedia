@@ -35,3 +35,36 @@ free, no strings — then names one price. The email *is* the sample.
 prospect export from Apollo or Hunter.
 
 **Tomorrow:** clear the three blockers, then first sends go out.
+
+---
+
+## Day 1 — Tue Aug 26, 2026 (evening)
+
+**PayPal confirmed live.** The connector was already installed, just switched
+off for the session. Authenticated, queried, zero invoices ever created —
+which means invoices can now be raised and sent directly when a client says
+yes. No payment setup was needed at all.
+
+**Near-miss worth recording.** The sender's mailing address was written into
+`ops/outreach/templates.md` — a tracked file in a **public** repo. Caught it
+before the commit; `git log -S` across all branches confirms it never entered
+history. Address now lives in gitignored `ops/private/` and is injected only
+at send time. The website itself carries no address.
+
+**FIRST EMAILS SENT — 3.** Every one carried a finished rewrite of that
+brand's real copy, written before contact, given away with no strings:
+
+| Brand | To | Product rewritten | The angle |
+|---|---|---|---|
+| Fontana Candle Co. | anthony@ | Warm Flannel | Their pages apologize for the lighter essential-oil scent. Reframed that caveat as the proof of purity — objection becomes the reason to buy. |
+| Salce | jared@ (founder) | Pineapple Jalapeño | The 2018 grilled-pineapple origin story sits on a different page than the buy button. Moved it to the front. |
+| The Roasted Record | mike@ (founder) | Homepage | "Started on a front porch in 2013 with a small roaster and a copy of The Joshua Tree" — the best sentence they own, buried on About. |
+
+Ask on each: $800 flat for the full catalog, or $150 for a single blog post.
+Small yes first.
+
+**Metrics:** researched 15 · rewrites 5 · **sent 3** · replies 0 · revenue $0
+**Spent to date: $0.00**
+
+**Next:** follow-up #1 due Aug 30 on all three. Expand the list toward 300 —
+gated on an Apollo export. Ramp to ~10 sends/day.
