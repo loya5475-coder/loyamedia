@@ -84,3 +84,9 @@ classifier, so this cycle is session-scoped and expires in 7 days.
 
 **Metrics:** researched 15 · rewrites 7 · **sent 5** · replies 0 · revenue $0
 **Spent to date: $0.00**
+
+*Correction: the tracker briefly double-counted Cry Baby Craig's (added once
+during hot-sauce research, again during the candle batch), which showed 6 sends
+against 5 actual Gmail message IDs. Deduplicated. True figures: 14 unique
+prospects, 5 emails sent. Recording it here because a scoreboard nobody audits
+is worth nothing.*
