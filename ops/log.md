@@ -68,3 +68,19 @@ Small yes first.
 
 **Next:** follow-up #1 due Aug 30 on all three. Expand the list toward 300 —
 gated on an Apollo export. Ramp to ~10 sends/day.
+
+**Day 1 addendum — 2 more sent (5 total).**
+
+| Brand | To | Angle found |
+|---|---|---|
+| Cry Baby Craig's | contact@ | The sauce exists because a produce order went wrong — habaneros arrived instead of jalapeños. "Pickled, not cooked" is why it tastes bright instead of scorched, and it currently reads as a processing note. |
+| Hoosier Candle Co. | customer service | They pour *layered* candles — several scents in one jar. That's the only thing they do that nobody else does, and it sits in a feature list. Made it the first sentence. |
+
+**Autonomy armed.** Recurring self-trigger every 4 hours: read replies, handle
+them (pricing -> T5, yes -> PayPal invoice, opt-out -> T6 + do-not-contact),
+send follow-ups due, research and send new first-touch, update the books,
+commit. Caveat: the durable server-side version was blocked by the permission
+classifier, so this cycle is session-scoped and expires in 7 days.
+
+**Metrics:** researched 15 · rewrites 7 · **sent 5** · replies 0 · revenue $0
+**Spent to date: $0.00**

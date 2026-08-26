@@ -3,8 +3,8 @@
 | Metric | Now | 30-day target |
 |---|---|---|
 | Prospects researched | 15 | 300 |
-| Rewrites completed | 5 | 300 |
-| **Emails sent** | **3** | 300 |
+| Rewrites completed | 7 | 300 |
+| **Emails sent** | **5** | 300 |
 | Replies | 0 | 25 |
 | Paid clients | 0 | 3–4 |
 | **Revenue collected** | **$0** | **$1,500–$3,500** |
