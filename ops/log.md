@@ -90,3 +90,14 @@ during hot-sauce research, again during the candle batch), which showed 6 sends
 against 5 actual Gmail message IDs. Deduplicated. True figures: 14 unique
 prospects, 5 emails sent. Recording it here because a scoreboard nobody audits
 is worth nothing.*
+
+**Day 1 final — 7 sent.** Two more, both niches away from hot sauce and candles
+so the format gets tested across categories:
+
+| Brand | To | Angle found |
+|---|---|---|
+| Lucky Dogs Bakery | lucky@ (Ron, founder) | Ron trained at the **San Francisco Baking Institute** — a credential essentially no pet brand can claim, sitting on the About page. It proves the human-grade promise faster than any ingredient list. |
+| Catskill Mountain Maple | catskillmountainmaple@ | The Kaufmans can let a customer physically walk from tree to sap house to jug. Every maple brand claims "pure, family farm"; almost none can prove it on foot. |
+
+**Metrics:** researched 18 · rewrites 9 · **sent 7** · replies 0 · revenue $0
+**Spent to date: $0.00**
