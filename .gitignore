@@ -1,1 +1,4 @@
 .claude/
+
+# private operator data - never commit
+ops/private/

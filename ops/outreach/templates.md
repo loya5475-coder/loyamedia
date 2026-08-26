@@ -146,7 +146,7 @@ Then add to `ops/outreach/do-not-contact.txt` immediately.
 Loya Media · content that converts
 loyamedia.com · josel@loyamedia.com
 
-{{physical_address}}
+{{physical_address}}   <-- pulled at send time from ops/private/sender-identity.txt (gitignored)
 Don't want to hear from me again? Just reply "stop" and you won't.
 ```
 
