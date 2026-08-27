@@ -115,3 +115,45 @@ the next 300 emails point.
 
 **Metrics:** researched 23 · rewrites 11 · **sent 9** · replies 0 · revenue $0
 **Spent to date: $0.00**
+
+---
+
+## Day 2 — Thu Aug 27, 2026
+
+**Correction to Day 1: 2 of 9 bounced. Only 7 were delivered.**
+
+| Address | Failure |
+|---|---|
+| lucky@luckydogsbakery.com | remote server misconfigured |
+| contact@crybabycraigs.com | 550 5.1.1 — address not found |
+
+I reported "no bounces" before actually querying for them. That was wrong, and
+it was wrong in the flattering direction, which is the kind of error that
+matters most. The real delivered number is 7.
+
+**Bounce rate 22%.** Anything above ~5% degrades sender reputation and starts
+routing future mail to spam. Both bad addresses came from search-result
+summaries rather than a brand's own contact page. **New rule, effective now:
+only addresses published on the brand's own contact page. No pattern-guessed
+addresses, no addresses inferred from a third-party summary.**
+
+**Discovery: this Gmail account has run outbound before, and it failed.**
+The bounce history shows a June–July 2026 campaign aimed at estate-planning
+law firms — barnescadwell.com, thehugheslawfirm.net, pittengerlawoffice.com,
+ohioelderlaw.com, huntchicago.com, riojadenver.com. Nearly every one bounced.
+The addresses were pattern-guesses (`martin@`, `richard@`, `jennifer@`, and
+one literal typo: `stepehen@huntchicago.com`).
+
+Two consequences:
+1. The account carries prior bounce history, so deliverability headroom is
+   thinner than a clean account's. Volume discipline matters more, not less.
+2. It confirms the corrective rule above. That campaign didn't fail on copy —
+   it failed because the mail never arrived.
+
+**Open question for Jose:** `jose@loyamedia.com` bounced twice in June during a
+Workspace setup attempt ("address couldn't be found"). The signature currently
+lists `josel@loyamedia.com`. Needs confirming that mailbox actually exists —
+a dead address in the signature costs credibility on every send.
+
+**Metrics:** researched 23 · rewrites 11 · sent 9 · **delivered 7** · replies 0 · revenue $0
+**Spent to date: $0.00**
