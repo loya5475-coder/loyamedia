@@ -101,3 +101,17 @@ so the format gets tested across categories:
 
 **Metrics:** researched 18 · rewrites 9 · **sent 7** · replies 0 · revenue $0
 **Spent to date: $0.00**
+
+**Day 1 close — 9 sent.** Hit the week-one daily target.
+
+| Brand | To | Angle found |
+|---|---|---|
+| Hutch Leather Works | hutchleatherworks@ | Richard Fish sat the founder down at a treadle sewing machine in his log cabin on a cold Wisconsin winter day and taught him to stitch. No factory can write that sentence. It was on the About page. |
+| The Granola Factory | contact@ (Suzanne) | The recipe started as breakfast at the Virgilios' own bed and breakfast in 1988 — guests wouldn't stop asking to take it home. A stranger voting with their mouth before anything was for sale is the strongest proof a food brand can own. |
+
+Seven categories now: hot sauce, candles, coffee, pet treats, farm goods, leather,
+granola. Deliberate spread — the reply pattern across categories decides where
+the next 300 emails point.
+
+**Metrics:** researched 23 · rewrites 11 · **sent 9** · replies 0 · revenue $0
+**Spent to date: $0.00**
