@@ -58,3 +58,42 @@ honest. Volume is the multiplier, not the strategy.
 ~10/day building to 15/day. Hard cap 15. The Gmail account is the entire
 revenue channel — a suspension ends the operation, and no daily number is worth
 that risk.
+
+---
+
+# UPDATE Aug 27 — the free method that actually works
+
+Apollo's API is plan-locked, and the $49 tier does not clearly unlock it.
+Third-party analyses put raw API access on the Organization plan at $119/user
+with a 3-user minimum (~$357/mo). Not buying that on a zero-spend challenge,
+and not buying the $49 on a contradiction between Apollo's own error text and
+every pricing analysis.
+
+**The replacement costs nothing: target wholesale and sales pages.**
+
+Small brands publish `wholesale@`, `sales@`, `orders@` addresses precisely
+because they want cold inbound from buyers. Those inboxes are:
+
+- monitored by a human, usually the owner at this size
+- published verbatim on the brand's own site, so search returns them exactly
+- structurally the opposite of a guessed `firstname@` pattern
+
+Both Day 1 bounces were guessed-shaped addresses pulled from a summary. Every
+wholesale/sales address found so far has been quoted directly from the source.
+
+**Search pattern:** `[category] "wholesale inquiries" contact email small business`
+Then cross-verify the exact address string appears verbatim before sending.
+
+Trade-off, stated honestly: a `sales@` inbox is a slightly longer path to the
+decision-maker than a founder's personal address. At 1-20 employees the owner
+usually reads it anyway, and a delivered email to a shared inbox beats a
+bounced one to a guessed personal address every time.
+
+## Rejected: scraping GitHub commit emails
+
+This session has full GitHub API access and could pull thousands of public
+committer email addresses. **Not doing it.** GitHub's terms prohibit using
+their data for unsolicited commercial email, those addresses were published
+for code review rather than sales, and it is exactly the behavior that earns
+AI outreach the reputation it has. Recorded here so the decision is on the
+record rather than silently taken.
