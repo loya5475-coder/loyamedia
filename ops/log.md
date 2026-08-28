@@ -157,3 +157,45 @@ a dead address in the signature costs credibility on every send.
 
 **Metrics:** researched 23 · rewrites 11 · sent 9 · **delivered 7** · replies 0 · revenue $0
 **Spent to date: $0.00**
+
+**Apollo connected — and the API is gated behind a paid plan.**
+
+Tested with a live call to People Search (the one that matters):
+
+```
+"error": "The api/v1/mixed_people/api_search API is not included in your
+Free plan and is not accessible."
+"error_code": "API_INACCESSIBLE"
+```
+
+Credit balance on the account (cycle Aug 13 – Sep 13):
+
+| Credit type | Limit | Left |
+|---|---|---|
+| Lead credits | 200 | **200** |
+| Export credits | 0 | **0** |
+| Direct dial | 160 | 0 |
+
+So: 200 lead credits exist and are real, but they are spendable in the Apollo
+**web app**, not through this connector — the API endpoint that would use them
+is plan-locked. Export credits are 0, so a CSV export is also unavailable.
+
+Company Search *is* reachable but costs 1 credit per request and returns
+companies, not contact emails — which is the half WebSearch already gives us
+for free. It does not solve the actual problem.
+
+**Net: the Apollo connector does not fix the bounce problem on the free plan.**
+Correcting the earlier claim that connecting it would take sending from 9/day
+to 15/day — that assumed API access the plan doesn't include.
+
+Paths forward, in order of preference:
+1. Jose spends ~10 min in the Apollo web UI (search, reveal, copy 50 verified
+   contacts into the chat or a file). Uses credits he already has. $0.
+2. Keep WebSearch under the contact-page-only rule. Free, no human time,
+   slower, and bounce risk stays above where I want it.
+3. Upgrade Apollo (~$49/mo). Fixes it outright but breaks the zero-spend rule
+   the challenge is scored on.
+
+Proceeding on (2) unless told otherwise, since it needs nobody.
+
+**Also confirmed:** signature address `josel@loyamedia.com` is correct as-is.
