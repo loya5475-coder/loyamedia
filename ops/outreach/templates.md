@@ -152,3 +152,26 @@ Don't want to hear from me again? Just reply "stop" and you won't.
 
 `physical_address` is REQUIRED before any cold send. Commercial email without
 a valid physical postal address violates CAN-SPAM.
+
+---
+
+## Deliverability rules (added Aug 28 — mandatory)
+
+1. **Preflight every send:** `python3 ops/tools/preflight.py <email> --source-verbatim`
+   must print CLEAR. No exceptions, including follow-ups to new addresses.
+2. **Rotate subjects.** Never two consecutive sends with the same subject shape.
+   Rotation pool:
+   - `rewrote your {product} page`
+   - `your {product} description — a rewrite, free`
+   - `wrote this for {brand}`
+   - `{brand}'s {product} page, rewritten`
+   - `a free rewrite of your {product} copy`
+3. **Bounce kill-switch.** Check mailer-daemon 30–60 min after each batch.
+   ANY hard bounce -> stop new sends for 24h, mark prospect dead, log it,
+   re-verify sourcing method before resuming. Follow-ups to already-delivered
+   threads may continue (those addresses are proven).
+4. **Cap 10/day** (was 15). This account carries prior bounce history from the
+   June–July campaign; headroom is thinner. Spread sends across the day —
+   no bursts of 5+ in one hour.
+5. **Warm signal:** any reply, even a "no", is a deliverability asset. Always
+   respond politely and promptly — replies tell Gmail this is wanted mail.

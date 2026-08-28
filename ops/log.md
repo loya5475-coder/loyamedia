@@ -199,3 +199,30 @@ Paths forward, in order of preference:
 Proceeding on (2) unless told otherwise, since it needs nobody.
 
 **Also confirmed:** signature address `josel@loyamedia.com` is correct as-is.
+
+---
+
+## Day 3 — Fri Aug 28, 2026 (operator model switched to Fable by Jose)
+
+**Deliverability audit — Jose's standing order: protect the email account.**
+
+Checked: zero bounces on the two wholesale-page sends (Pacific Pickle Works,
+Dock 6 Pottery). The verbatim-address method is 2/2 delivered where the
+guessed-address method went 7/9.
+
+**Built `ops/tools/preflight.py`** — a mechanical pre-send gate: do-not-contact
+check, dedupe against the tracker, 10/day cap, MX lookup (dnspython now in the
+sandbox), and a verbatim-source attestation flag. Tested: correctly cleared a
+fresh address, blocked a duplicate, blocked a dead domain.
+
+Honest limit, on the record: both Aug-26 bounces had *live* MX records — the
+failures were mailbox-level. MX checks catch dead domains only. The load-bearing
+fix remains verbatim-published addresses.
+
+**Tightened rules:** daily cap cut 15 -> 10 (account has prior bounce history);
+mandatory subject rotation (all 11 sends to date shared one subject shape —
+a spam-filter clustering risk); bounce kill-switch (any hard bounce = 24h halt
+on new sends).
+
+**Metrics:** researched 29 · sent 11 · bounced 2 · delivered 9 · replies 0 · revenue $0
+**Spent to date: $0.00**
