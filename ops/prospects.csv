@@ -1,12 +1,12 @@
 status,first_name,business,domain,email,niche,product_targeted,rewrite_done,sent_date,touch,reply,outcome,value_usd,notes
-sent,Jared,Salce,getsalce.com,jared@getsalce.com,hot sauce / DTC food,Pineapple Jalapeno,yes,2026-08-26,1,,,," founder-direct email, strong origin story to lead with | T1 sent 8/26, follow-up due 8/30"
+sent,Jared,Salce,getsalce.com,jared@getsalce.com,hot sauce / DTC food,Pineapple Jalapeno,yes,2026-08-26,2,,,," founder-direct email, strong origin story to lead with | T1 sent 8/26, follow-up due 8/30 | T2 sent 9/1 (2d late - automation gap), T3 due 9/6"
 ready,,Cooper's Small Batch,cooperssmallbatch.com,(contact form),hot sauce / DTC food,Leche Diablesa,yes,,0,,,,chef-founded Denver; need direct email
 ready,,HAB Sauce,habsauces.com,(via site),hot sauce / DTC food,Smoked Cherrywood,yes,,0,,,,"Portland, 50+ SKUs = big store-rewrite fit"
 dead,,Cry Baby Craig's,crybabycraigs.com,contact@crybabycraigs.com,hot sauce / DTC food,Habanero & Garlic,yes,2026-08-26,1,,bounced,,"BOUNCED 8/26 - 550 5.1.1 address not found | published contact email | T1 sent 8/26, follow-up due 8/30"
 research,,Bradshaw Sauce Co.,bradshawsauceco.com,,hot sauce / DTC food,,no,,0,,,,Alexandria VA
-sent,Anthony,Fontana Candle Company,fontanacandlecompany.com,anthony@fontanacandlecompany.com,candles / home fragrance,,yes,2026-08-26,1,,,,"founder-direct email; Lancaster PA; all-natural angle underused | T1 sent 8/26, follow-up due 8/30"
-sent,,Hoosier Candle Company,hoosiercandlecompany.com,hoosiercandlecocustomerservice@gmail.com,candles / home fragrance,Layered soy candles,yes,2026-08-26,1,,,,"handmade small-batch soy, Indiana | T1 sent 8/26, follow-up due 8/30"
-sent,Mike,The Roasted Record,theroastedrecord.com,mike@theroastedrecord.com,coffee roaster,,yes,2026-08-26,1,,,,"OWNER-NAMED email. Stuart FL. small shop+roaster. | T1 sent 8/26, follow-up due 8/30"
+sent,Anthony,Fontana Candle Company,fontanacandlecompany.com,anthony@fontanacandlecompany.com,candles / home fragrance,,yes,2026-08-26,2,,,,"founder-direct email; Lancaster PA; all-natural angle underused | T1 sent 8/26, follow-up due 8/30 | T2 sent 9/1 (2d late - automation gap), T3 due 9/6"
+sent,,Hoosier Candle Company,hoosiercandlecompany.com,hoosiercandlecocustomerservice@gmail.com,candles / home fragrance,Layered soy candles,yes,2026-08-26,2,,,,"handmade small-batch soy, Indiana | T1 sent 8/26, follow-up due 8/30 | T2 sent 9/1 (2d late - automation gap), T3 due 9/6"
+sent,Mike,The Roasted Record,theroastedrecord.com,mike@theroastedrecord.com,coffee roaster,,yes,2026-08-26,2,,,,"OWNER-NAMED email. Stuart FL. small shop+roaster. | T1 sent 8/26, follow-up due 8/30 | T2 sent 9/1 (2d late - automation gap), T3 due 9/6"
 research,Jodi,Cascadia Coffee Roasters,cascadiaroasters.com,Jodi@cascadiaroasters.com,coffee roaster,,no,,0,,,,OWNER-NAMED email. Portland OR.
 research,,Thread Coffee Roasters,threadcoffee.com,thread@threadcoffee.com,coffee roaster,,no,,0,,,,"Baltimore, worker-owned, strong story to mine"
 research,Joy,Center Street Soap Co.,centerstreetsoapco.com,,handmade soap,,no,,0,,,,"founder Joy Benzing, Manchester CT - need email"
@@ -14,16 +14,16 @@ research,,MION Artisan Soap Co.,mionartisansoap.com,,handmade soap,,no,,0,,,,"fa
 research,,Savage Jerky,savagejerky.com,,jerky / DTC food,,no,,0,,,,"small-batch, bold brand voice already"
 research,,LJ's Jerky,ljsjerky.com,,jerky / DTC food,,no,,0,,,,"Sacramento CA, founded 2010, LLC"
 dead,Ron,Lucky Dogs Bakery,luckydogsbakery.com,lucky@luckydogsbakery.com,pet treats,Peanut Butter Banana,yes,2026-08-26,1,,bounced,,"BOUNCED 8/26 - remote server misconfigured | founder trained at SF Baking Institute - USDA organic. T1 sent 8/26, f/u due 8/30"
-sent,,Catskill Mountain Maple,catskillmountainmaple.com,catskillmountainmaple@gmail.com,maple / family farm,Pure maple syrup,yes,2026-08-26,1,,,,"Kaufman family, 140ac DeLancey NY, 50yrs. T1 sent 8/26, f/u due 8/30"
+sent,,Catskill Mountain Maple,catskillmountainmaple.com,catskillmountainmaple@gmail.com,maple / family farm,Pure maple syrup,yes,2026-08-26,2,,,,"Kaufman family, 140ac DeLancey NY, 50yrs. T1 sent 8/26, f/u due 8/30 | T2 sent 9/1 (2d late - automation gap), T3 due 9/6"
 research,,Smart Cookie Barkery,smartcookietreats.com,woof@smartcookietreats.com,pet treats,,no,,0,,,,"Golden CO; leans private-label, lower fit"
 research,,Charlie's Treats Bakery,charliestreatsbakery.com,,pet treats,,no,,0,,,,"Delaware, woman-owned, handmade - need email"
-sent,,Hutch Leather Works,hutchleatherworks.com,hutchleatherworks@yahoo.com,leather goods,Handmade wallet,yes,2026-08-26,1,,,,"Kennan WI, est 2010. Treadle-machine origin story. T1 sent 8/26, f/u due 8/30"
-sent,Suzanne,The Granola Factory,thegranolafactory.com,contact@thegranolafactory.com,granola / DTC food,Honey pecan granola,yes,2026-08-26,1,,,,"Bethlehem PA, B&B origin 1988, 21 bakers, 500 stores. T1 sent 8/26, f/u due 8/30"
+sent,,Hutch Leather Works,hutchleatherworks.com,hutchleatherworks@yahoo.com,leather goods,Handmade wallet,yes,2026-08-26,2,,,,"Kennan WI, est 2010. Treadle-machine origin story. T1 sent 8/26, f/u due 8/30 | T2 sent 9/1 (2d late - automation gap), T3 due 9/6"
+sent,Suzanne,The Granola Factory,thegranolafactory.com,contact@thegranolafactory.com,granola / DTC food,Honey pecan granola,yes,2026-08-26,2,,,,"Bethlehem PA, B&B origin 1988, 21 bakers, 500 stores. T1 sent 8/26, f/u due 8/30 | T2 sent 9/1 (2d late - automation gap), T3 due 9/6"
 research,,Back Roads Granola,backroadsgranola.com,info@backroadsgranola.com,granola / DTC food,,no,,0,,,,thin public detail - needs deeper research before a rewrite
 research,Emily & Chris,Seattle Granola Company,seattlegranolacompany.com,,granola / DTC food,,no,,0,,,,"founded 2013, Edmonds WA, vegan/GF - need email"
 research,,Werther Leather Goods,wertherleathergoods.com,,leather goods,,no,,0,,,,"tiny workshop Norfolk VA, does own metalwork - need email"
-sent,Bradley,Pacific Pickle Works,pacificpickleworks.com,sales@pacificpickleworks.com,pickles / DTC food,Jalabeanos,yes,2026-08-27,1,,,,"WHOLESALE-PAGE address. Santa Barbara since 2001, Good Food Award. f/u due 8/31"
-sent,,Dock 6 Pottery,dock6pottery.com,Orders@dock6pottery.com,ceramics,Geode coasters,yes,2026-08-27,1,,,,WHOLESALE-PAGE address. NE Minneapolis. f/u due 8/31
+sent,Bradley,Pacific Pickle Works,pacificpickleworks.com,sales@pacificpickleworks.com,pickles / DTC food,Jalabeanos,yes,2026-08-27,2,,,,"WHOLESALE-PAGE address. Santa Barbara since 2001, Good Food Award. f/u due 8/31 | T2 sent 9/1 (2d late - automation gap), T3 due 9/6"
+sent,,Dock 6 Pottery,dock6pottery.com,Orders@dock6pottery.com,ceramics,Geode coasters,yes,2026-08-27,2,,,,"WHOLESALE-PAGE address. NE Minneapolis. f/u due 8/31 | T2 sent 9/1 (2d late - automation gap), T3 due 9/6"
 research,,The Pickle Guys,pickleguys.com,sales@pickleguys.com,pickles / DTC food,,no,,0,,,,"wholesale-page address, NYC LES"
 research,,Notary Ceramics,notaryceramics.com,,ceramics,,no,,0,,,,"Portland OR, female-owned, small batch"
 research,,Jars of Dust,jarsofdust.com,,ceramics,,no,,0,,,,wholesale program listed

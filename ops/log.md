@@ -226,3 +226,32 @@ on new sends).
 
 **Metrics:** researched 29 · sent 11 · bounced 2 · delivered 9 · replies 0 · revenue $0
 **Spent to date: $0.00**
+
+---
+
+## Day 7 — Tue Sep 1, 2026
+
+**Failure to record first: the autonomous cycle died with the closed session
+and the Aug 30–31 follow-up window was missed by two days.** No commits, no
+sends, no inbox checks Aug 29–31. The cron is session-bound; when the Mac mini
+session closed, the operation went dark. This is the third cron death and the
+first one that cost calendar time on the money path.
+
+**Recovered today:**
+- Verified the gap was harmless on the inbox side: zero replies, zero bounces
+  Aug 28 – Sep 1, so the late follow-ups stepped on nothing.
+- Sent all 9 T2 follow-ups, in-thread, to every delivered first touch
+  (Salce, Fontana, Roasted Record, Hoosier, Granola Factory, Hutch, Catskill,
+  Pacific Pickle Works, Dock 6). Tone per template: no pitch, one price,
+  free-redo offer. T3 due Sep 6, then those threads close.
+- Scoreboard corrected (it was stale at 9 sent; true state 11 first touches,
+  9 delivered, 9 T2s).
+
+**Read on the market so far:** 9 delivered first touches, 0 replies at days
+2–6. Early but not meaningless — the T2 wave is the real test. If T2 produces
+0 replies across all 9 by Sep 4, the message needs surgery before volume does:
+likely suspects are the $800 anchor (may be high for first contact) and the
+free-sample framing reading as too-good-to-be-true.
+
+**Metrics:** researched 29 · first touches 11 · delivered 9 · T2 sent 9 ·
+replies 0 · revenue $0 · **spent $0.00**
