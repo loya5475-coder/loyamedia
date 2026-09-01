@@ -255,3 +255,35 @@ free-sample framing reading as too-good-to-be-true.
 
 **Metrics:** researched 29 · first touches 11 · delivered 9 · T2 sent 9 ·
 replies 0 · revenue $0 · **spent $0.00**
+
+**Sender identity finding (Sep 1) — the real volume constraint.**
+
+DNS check on loyamedia.com returns a fully configured, authenticated mail domain:
+
+| Record | Value | Status |
+|---|---|---|
+| MX | `1 smtp.google.com` | Google Workspace live |
+| SPF | `v=spf1 include:_spf.google.com ~all` | correct |
+| DKIM | `google._domainkey` 2048-bit key published | valid |
+| DMARC | `v=DMARC1; p=none; rua=mailto:josel@loyamedia.com` | live, monitoring |
+
+Meanwhile every one of the 20 messages sent so far went from
+`jose.loyamedia@gmail.com` — a free consumer account with none of that
+authentication — while signing as `josel@loyamedia.com`.
+
+Consequences, in order of cost:
+1. **No SPF/DKIM/DMARC alignment.** Receiving servers cannot verify the sender
+   against the domain in the signature. This is the single largest silent
+   deliverability penalty available.
+2. **Visible mismatch.** From-address is a gmail.com; signature and website say
+   loyamedia.com. To a skeptical recipient that reads as a spoof.
+3. **Lower volume ceiling.** Consumer Gmail sends ~500/day and has thinner
+   reputation headroom, which is part of why the cap here is 10/day. An
+   authenticated Workspace domain supports ~2,000/day and tolerates 30-40/day
+   cold volume comfortably.
+
+The fix is a reconnection, not a purchase: point the Gmail connector at the
+existing `josel@loyamedia.com` Workspace mailbox. No new spend, no list work.
+
+Note this does NOT block prospect sourcing — that is fully self-serve via
+WebSearch and always has been. It blocks how many of those sends actually land.
