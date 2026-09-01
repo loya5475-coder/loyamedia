@@ -287,3 +287,64 @@ existing `josel@loyamedia.com` Workspace mailbox. No new spend, no list work.
 
 Note this does NOT block prospect sourcing — that is fully self-serve via
 WebSearch and always has been. It blocks how many of those sends actually land.
+
+---
+
+## Day 7 (cont.) — CONTAMINATION FOUND. New sends halted pending Jose's call.
+
+The Gmail connector was repointed to `josel@loyamedia.com` today. The sent
+folder of that mailbox contains a **second, ongoing cold-outreach campaign that
+this operator did not send.**
+
+Observed: ~29 distinct prospect threads between Aug 21 and Sep 1, at roughly
+6-8 sends/day on a ~3-minute cadence, with templated 5-day follow-ups. Clearly
+automated, not hand-sent.
+
+Its pattern is distinct from ours:
+
+| | This operation | The other campaign |
+|---|---|---|
+| Subject | `rewrote your {product} page` | `Your profile reads like every other agent` |
+| Opening | finished rewrite, given free | a list of what is missing/broken on their site |
+| Ask | one price ($800 / $150) | "a one-page outline of what I'd change" |
+| Targets | food, candles, leather, ceramics | real-estate agents + DTC brands |
+
+Sample recipients from that campaign: luxeknows.com, team-newman.com,
+kingdomkeysrealty.net, mendozateam.com, realrealtyus.com, homemiamire.com,
+fablepets.com, canyoncoffee.co, uncommoncoffeeroasters.com, goodnowfarms.com,
+beangoods.com, gr8nola.com, joahlove.com, voodoomakeup.com, symbiosisgear.com,
+hilltoppacks.com, shakesphere.com, getcotto.com, semainehealth.com.
+
+At least 2 hard bounces in that campaign (heather@heatherschoice.com,
+bruno@uncommoncoffeeroasters.com).
+
+### Why this halts sending
+
+1. **Shared sender reputation.** Both campaigns now send from the same
+   authenticated domain. Volumes compound; spam complaints compound. A
+   "here is what's wrong with your website" opener draws complaints at a higher
+   rate than a "here is finished work, free" opener, and this operation would
+   absorb that damage without having caused it.
+2. **Double-contact risk.** No overlap yet, but both campaigns are working
+   small DTC food and craft brands. They have already hit two coffee roasters;
+   this operation hit a third. The same founder receiving two different pitches
+   from one address is a credibility loss and a spam signal.
+3. **Attribution is now broken.** Replies landing in this mailbox cannot be
+   cleanly assigned to either campaign. This operation has been reporting
+   "9 delivered, 0 replies" as its own result. Going forward that claim is not
+   verifiable from a shared mailbox — which matters more than usual, because the
+   entire point of this exercise is comparing operators on measurable results.
+4. **Broken threading.** The 9 first touches and 9 follow-ups from this
+   operation live in `jose.loyamedia@gmail.com`. T3 is due Sep 6. Sending it
+   from `josel@loyamedia.com` would arrive as a stranger replying to someone
+   else's conversation.
+
+### Recommendation
+
+Separate sending identities. Either this operation returns to
+`jose.loyamedia@gmail.com` (keeps thread continuity, loses domain
+authentication), or each operator gets its own mailbox on the domain.
+Until that is decided, no new first-touch sends go out from this account.
+
+**Metrics unchanged (this operation only):** first touches 11 · delivered 9 ·
+T2 sent 9 · replies 0 · revenue $0 · spent $0.00
