@@ -6,7 +6,7 @@ Exits 0 = clear to send. Exits 1 = BLOCKED (reason on stdout).
 Layers, in order:
   1. do-not-contact list        -> hard block, never overridable
   2. already contacted (tracker)-> hard block (dedupe; protects reputation)
-  3. daily send cap (10)        -> hard block until next UTC day
+  3. daily send cap (ramped)    -> from ops/tools/cap.json; hard block
   4. MX record on domain        -> hard block if absent (catches dead domains
                                    ONLY; a live MX does not prove the mailbox
                                    exists -- both Aug-26 bounces had live MX)
@@ -16,7 +16,12 @@ Layers, in order:
 import csv, sys, datetime, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-DAILY_CAP = 10
+def daily_cap():
+    """Ramped cap from ops/tools/cap.json (UTC date key), default 30."""
+    import json
+    cfg = json.loads((ROOT / "ops/tools/cap.json").read_text())
+    return int(cfg.get(datetime.date.today().isoformat(), cfg.get("default", 30)))
+DAILY_CAP = None
 
 def fail(msg):
     print(f"BLOCKED: {msg}"); sys.exit(1)
@@ -41,12 +46,20 @@ def main():
         rows = list(csv.DictReader(tracker.open()))
         for r in rows:
             e = (r.get("email") or "").strip().lower()
-            if e == email and r.get("status") in ("sent", "dead"):
-                fail(f"{email} already contacted (status={r['status']})")
+            if e == email and r.get("status") == "dead":
+                fail(f"{email} is dead ({r.get('outcome') or 'bounced/opt-out'})")
+            if e == email and r.get("status") == "sent":
+                fail(f"{email} already contacted (status=sent, touch {r.get('touch')})")
+            if e == email and r.get("status") == "inherited":
+                t = int(r.get("touch") or 0)
+                if t >= 3:
+                    fail(f"{email} inherited thread already at {t} touches -- closed")
+                print(f"NOTE: inherited thread at touch {t}; this send is touch {t+1} and must reply IN-THREAD")
             if r.get("sent_date") == today:
                 sent_today += 1
-    if sent_today >= DAILY_CAP:
-        fail(f"daily cap reached ({sent_today}/{DAILY_CAP}); resume tomorrow")
+    cap = daily_cap()
+    if sent_today >= cap:
+        fail(f"daily cap reached ({sent_today}/{cap}); resume tomorrow")
 
     try:
         import dns.resolver
@@ -58,7 +71,7 @@ def main():
         fail("missing --source-verbatim: attest the address was copied "
              "verbatim from the brand's own site, then re-run")
 
-    print(f"CLEAR: {email} ({sent_today}/{DAILY_CAP} sent today, MX ok)")
+    print(f"CLEAR: {email} ({sent_today}/{cap} sent today, MX ok)")
 
 if __name__ == "__main__":
     main()

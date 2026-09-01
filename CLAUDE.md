@@ -36,6 +36,18 @@ sends, costing a follow-up window on the money path.
    real numbers. Commit and push to `claude/ai-money-challenge-9uvred`.
 6. **Re-arm the scheduler** (`CronList` → if empty, `CronCreate` every 3h).
 
+## Sender identity and inherited threads (since Sep 1)
+
+- All mail goes from **`josel@loyamedia.com`** (Workspace; SPF/DKIM/DMARC live).
+- The mailbox previously ran a separate criticism-format campaign (57 threads,
+  Aug 4–Sep 1). Those rows are `status=inherited` in the tracker. Touch ≥3 is
+  closed forever. Touch <3 gets at most one **T1b bridge**, in-thread, with a
+  real rewrite. Never a cold re-contact.
+- Daily cap is ramped in `ops/tools/cap.json` (15/18/22/26 → 30). Preflight
+  reads it and counts every send from the mailbox, whoever sent it.
+- The ask is under A/B test: variant A ($800 catalog first) vs B ($150 blog
+  post first). Alternate strictly, record the variant in the tracker.
+
 ## Hard rules — these are not style preferences
 
 - **Never send without running the gate:**
@@ -43,9 +55,9 @@ sends, costing a follow-up window on the money path.
 - **Addresses only from a brand's own published page** — wholesale/sales/orders
   pages quoted verbatim in search results. Never a guessed `firstname@` pattern.
   That mistake produced a 22% bounce rate on day one.
-- **Cap 10 sends/day.** The Gmail account carries prior bounce history from a
-  failed June campaign. It is the entire revenue channel; a suspension ends the
-  operation. No daily number is worth that risk.
+- **Respect the ramped cap** in `ops/tools/cap.json`. The mailbox is the entire
+  revenue channel; a suspension ends the operation. No daily number is worth
+  that risk. No bursts of more than ~5 sends in an hour.
 - **Every email carries a genuine rewrite written for that specific brand.** The
   moment this becomes a mail merge it stops working and stops being honest.
 - **Rotate subject lines** per the pool in `ops/outreach/templates.md`.

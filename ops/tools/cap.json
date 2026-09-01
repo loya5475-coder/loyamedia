@@ -1,0 +1,8 @@
+{
+  "_comment": "Daily send cap by UTC date. Ramp after taking over josel@loyamedia.com on 2026-09-01; the mailbox already carried ~57 threads from a prior campaign, so volume steps up rather than jumps. 'default' applies after the ramp.",
+  "2026-09-01": 15,
+  "2026-09-02": 18,
+  "2026-09-03": 22,
+  "2026-09-04": 26,
+  "default": 30
+}

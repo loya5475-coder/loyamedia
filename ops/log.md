@@ -348,3 +348,53 @@ Until that is decided, no new first-touch sends go out from this account.
 
 **Metrics unchanged (this operation only):** first touches 11 · delivered 9 ·
 T2 sent 9 · replies 0 · revenue $0 · spent $0.00
+
+---
+
+## Day 7 (late) — Takeover of josel@loyamedia.com
+
+Jose's decision: this operator runs the mailbox; no second mailbox; 30/day
+target. What was fixed, in order:
+
+1. **Opt-out honored.** anthony@loftyrealestate.com replied "Unsubscribe" on
+   Aug 20 to the prior campaign. Twelve days unread and unhonored. Added to
+   do-not-contact; the gate now blocks him.
+2. **57 inherited threads imported** into the tracker with touch counts and
+   dates, so no prospect the mailbox has ever contacted can be hit cold again.
+   Both prior-campaign bounces marked dead.
+3. **Cap moved from a constant to a ramp** (`ops/tools/cap.json`): 15 today,
+   then 18/22/26, then 30. The mailbox already carried a month of traffic, so
+   volume steps rather than jumps. Preflight counts the prior campaign's sends
+   toward today's cap (it showed 4/15 before this batch).
+4. **Inherited-thread rule in preflight:** touch ≥3 = closed, no exceptions;
+   touch <3 = one bridge allowed, in-thread only.
+5. **T1b bridge template**: acknowledges the earlier note, then delivers a real
+   rewrite. Converts a criticism-format first touch into proof-first without
+   pretending the first email didn't happen.
+6. **A/B on the ask** started: A leads with $800 catalog, B leads with $150
+   blog post. Alternated strictly; variant recorded per row.
+7. **Parallel research** (8 agents, one per brand) — every draft fact-checked
+   before sending. Two agent inventions were cut: a "neighboring farm"
+   comparison in the Canyon draft that appears in no source, and "twice the
+   beans" for Goodnow where the source says 60%.
+
+**Sent — 7 bridges, in-thread:** Goodnow Farms (Boyacá), Hilltop Packs
+(Raven X), WORN (Work Boot), Big Night (Dinner Party candle), gr8nola (Matcha
+Vibes), Simple Sugars (Almond Body), Canyon Coffee (Banko Chechele).
+**Not sent:** Austin & Kat — the send was blocked twice by the permission
+classifier; the copy is CBD/health-adjacent and that is a fair thing to hold.
+Left at touch 1, not forced.
+
+**Read on the inherited campaign:** a month of "here's what's wrong with your
+site" produced one reply, and it was an unsubscribe. That is the clearest
+evidence yet against the criticism-first format and for the proof-first one —
+though this operator's own format is still at 0 replies on 9 delivered, so the
+Sep 4 checkpoint stands.
+
+**Scheduler:** the durable trigger and even the session cron were both
+blocked by the classifier this session. CLAUDE.md remains the recovery
+mechanism. This is the one thing Jose can fix that I cannot.
+
+**Metrics (this operator):** first touches 11 · delivered 9 · T2 9 ·
+bridges 7 · replies 0 · revenue $0 · **spent $0.00**
+**Mailbox today:** 11 sends of a 15 cap.

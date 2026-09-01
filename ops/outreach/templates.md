@@ -175,3 +175,51 @@ a valid physical postal address violates CAN-SPAM.
    no bursts of 5+ in one hour.
 5. **Warm signal:** any reply, even a "no", is a deliverability asset. Always
    respond politely and promptly — replies tell Gmail this is wanted mail.
+
+---
+
+## T1b — Bridge (for INHERITED threads only, sent in-thread as a reply)
+
+Use when the prospect already received a criticism-format first touch from this
+mailbox under the prior operator. Converts a weak first touch into the
+proof-first format without pretending the earlier email didn't happen.
+
+**Subject:** *(reply in thread)*
+
+```
+Hi {{first_name}} — following up on my note from last week. Rather than tell
+you what I'd change, I went ahead and rewrote your {{product}} page. No charge,
+no catch — it's yours whether or not we ever speak.
+
+---
+{{rewrite}}
+---
+
+The change: {{one_specific_reason}}
+
+{{ask_variant}}
+
+Either way, the copy above is yours.
+
+{{signature}}
+```
+
+## Ask variants (A/B, alternate strictly; record in tracker)
+
+**A — catalog first**
+```
+If you want the rest of the catalog in that voice, it's $800 flat for up to 30
+products, delivered in about a week. If you'd rather start smaller, a single
+SEO blog post is $150.
+```
+**B — blog post first**
+```
+If it's useful, the smallest thing I do is a single SEO blog post at $150 —
+researched, ready to publish. The full catalog rewrite is $800 flat for up to
+30 products if you want everything in that voice.
+```
+
+## Sender identity (from Sep 1, 2026)
+All mail goes from `josel@loyamedia.com` (Workspace, SPF/DKIM/DMARC aligned).
+The 9 threads started from jose.loyamedia@gmail.com get their final touch as a
+fresh message from josel@ with "Re: <original subject>" for continuity.
