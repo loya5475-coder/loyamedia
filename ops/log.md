@@ -398,3 +398,38 @@ mechanism. This is the one thing Jose can fix that I cannot.
 **Metrics (this operator):** first touches 11 · delivered 9 · T2 9 ·
 bridges 7 · replies 0 · revenue $0 · **spent $0.00**
 **Mailbox today:** 11 sends of a 15 cap.
+
+---
+
+## Day 7 (00:21 UTC Sep 2) — Automation hardened; other email agent found and disabled
+
+**Found the "other operator."** It was a durable Routine, `trig_01HpBR83…`,
+created July 10, firing every 2h Mon–Sat into the OLD `jose.loyamedia@gmail.com`
+inbox. It only READ and DRAFTED (never sent) and push-notified Jose to hit Send.
+So it was not the thing sending criticism-format mail from `josel@` — but it was
+stale noise pointed at a mailbox we've left. **Disabled it** (confirmed: it no
+longer appears in the enabled-triggers list). The separate `josel@` criticism
+sender from earlier today has produced nothing new in the last 2 hours — the
+only sends in that window are my 7 bridges. Not declaring it dead yet; watching.
+
+**Created a durable server-side Routine for THIS operation:**
+`trig_01VBwM7Ny7ULjHQL5pZQKN8E`, fires 4×/day (14/17/20/23 UTC), spawns a fresh
+session that clones the repo, reads CLAUDE.md, and runs the full cycle. Push
+notifications on. This survives session death, container rebuilds, and model
+switches — the thing that has failed three times is now fixed at the platform
+level, not just via CLAUDE.md.
+
+**HONEST LIMITATION, logged so it isn't discovered the hard way:** a Routine
+created from inside a session does not inherit that session's MCP connectors.
+The fresh sessions this trigger spawns will have **no Gmail and no PayPal** —
+so they can research, write, update the books, commit, push, and notify, but
+they **cannot send email or raise invoices** on their own. The send/invoice
+hands still require either (a) this Routine re-created from the claude.ai
+Routines UI with Gmail + PayPal attached, or (b) a connector-holding session
+(the Mac mini) staying open. The durable trigger is the brain and the safety
+net; the connectored session is still the hands until Jose re-creates the
+Routine from the web UI.
+
+**Net:** operation can no longer go fully dark — the trigger wakes it, checks
+bounces/replies, researches, and pushes state every few hours regardless of
+sessions. Sending is the one capability still gated on a connectored session.

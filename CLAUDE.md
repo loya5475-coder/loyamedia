@@ -83,11 +83,17 @@ sends, costing a follow-up window on the money path.
 | `ops/tools/preflight.py` | Mandatory pre-send gate |
 | `ops/samples/` | Completed rewrites |
 
-## Known constraint
+## Scheduler (durable, since Sep 2)
 
-The scheduler (`CronCreate`) is **session-scoped** — it dies when the session
-ends and has done so three times. The durable server-side alternative
-(`create_trigger`) is blocked by the permission classifier. Until that is
-allowed, this file is the recovery mechanism: it loads automatically in every
-session in this repo, so a fresh session can pick the operation back up without
-the owner having to notice it stopped.
+A durable server-side Routine now drives the cycle: `trig_01VBwM7Ny7ULjHQL5pZQKN8E`,
+firing 4×/day (14/17/20/23 UTC), spawning a fresh session that clones this repo,
+reads this file, and runs the resume sequence. It survives session death.
+
+**Caveat — the send gap:** a Routine created from inside a session does NOT
+inherit that session's MCP connectors, so the spawned sessions have no Gmail or
+PayPal. They can research, write, track, commit, push, and notify — but cannot
+send mail or invoice. To close the gap, re-create this Routine from the
+claude.ai Routines UI with Gmail + PayPal attached, OR keep a connector-holding
+session (the Mac mini) open as the sender. This file remains the recovery net if
+the Routine is ever lost. The old July drafting Routine (`trig_01HpBR83…`,
+pointed at the retired gmail.com inbox) was disabled Sep 2.
