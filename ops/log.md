@@ -433,3 +433,22 @@ Routine from the web UI.
 **Net:** operation can no longer go fully dark — the trigger wakes it, checks
 bounces/replies, researches, and pushes state every few hours regardless of
 sessions. Sending is the one capability still gated on a connectored session.
+
+---
+
+## Day 23 — Wed Sep 17, 2026. BLACKOUT AUDIT: the operation died Sep 1.
+
+Resuming after a 16-day gap. Hard truth, verified against Gmail:
+
+- **No email sent since Sep 1.** Sent folder: 7 threads, all last-touched Sep 1 23:44–23:50 (the 7 bridges). Nothing after.
+- **No human replies, ever.** Inbox Sep 2–17 = 21 messages, 100% automated (Workspace, DMARC, Apollo/Prospeo marketing, Google payments). Zero prospect replies.
+- **T3 follow-ups (due ~Sep 4–6) never sent.** Missed window.
+- **Revenue $0. Clients 0. Replies 0. Spent $0.**
+
+**Cause: the durable trigger was a false green light.** trig_01VBwM7Ny7ULjHQL5pZQKN8E fired 4×/day for 15 days, last run SUCCEEDED Sep 17 23:07 — with mcp_connections: [] the entire time. Connectorless sessions: no Gmail, no PayPal, no ability to send, invoice, or meaningfully check the inbox. They "succeeded" by doing nothing. The connector gap documented on Day 7 is exactly what killed the operation, and the trigger's green status hid it. The connector-holding session (Mac mini) evidently closed shortly after Sep 2.
+
+**Result vs forecast:** forecast was $1,500–$3,500 expected. Actual $0 with 9 days left. Proof-first format: 0 replies / 16 delivered. Inherited criticism format: 0 real replies / 57. Both formats converted nobody in this sample. Recorded as-is, not spun.
+
+**The other operator's tooling is still subscribed** (Apollo + Prospeo marketing mail still arriving to josel@) but its sent output is also zero since Sep 1 — it went quiet too.
+
+Decision pending from Jose: whether to restart the engine for the final 9 days, and how to close the connector gap so "automated" is real (recreate the Routine from the claude.ai Routines UI with Gmail+PayPal attached, or keep a connectored session open as the sender). No new sends fired this turn — surfacing the true state first.
