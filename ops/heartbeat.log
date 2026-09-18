@@ -1,3 +1,4 @@
 2026-09-18T03:09Z DEGRADED system repair: cold-start guard, dedupe fix, inherited guard, heartbeat introduced
 2026-09-18T03:46Z OK sent 3 T1c short-form (Back Roads, Thread, Pickle Guys); cap 3/3 used
 2026-09-18T03:52Z OK checked bounces/replies (none), cap 3/3 already spent today, no new sends; confirmed Gmail connector live end-to-end
+2026-09-18T03:57Z OK staged 5 verified MX-checked prospects for 9/19; re-tested create_trigger connectors (unavailable, gap stands); inbox clean

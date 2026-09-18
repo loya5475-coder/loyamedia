@@ -517,3 +517,52 @@ YET PROVEN" note in CLAUDE.md, so end-to-end automation is now demonstrated.
 **Metrics:** sent this cycle 0 (cap exhausted) · today's total unchanged at
 3/3 · total own sends 21 · delivered 19 · replies 0 · revenue $0 · spent
 $0.00
+
+---
+
+## Day 24 cont'd — Fri Sep 18, 2026, pipeline build (human session)
+
+Cap was already 3/3 spent, so this cycle bought no sends. It bought **inventory**
+— five verified, MX-checked prospects staged so tomorrow's cap of 5 fires
+without a research delay.
+
+**Automation: PROVEN, then a gap re-tested and re-confirmed.**
+- The 03:51 Routine run made a live Gmail call, ran preflight, wrote a
+  heartbeat and pushed to the right branch. End-to-end automation works. The
+  `allowed_tools` unknown is resolved — MCP tools run fine alongside it.
+- `create_trigger` has gained a `connectors` parameter since this gap was
+  documented. **I tested it. It returns `not available for this organization`.**
+  The send gap in CLAUDE.md is real and stands. I did not create a
+  connector-less backup Routine — it could only log its own blindness.
+- Also found: the connectored Routine was made in the UI, so agents cannot
+  `update_trigger` it. Its cadence is stuck at 1x/day until Jose changes it.
+
+**Address verification — every candidate corroborated twice before queueing.**
+The 22% bounce on day one came from trusting a single unverified address, so
+each one below needed two independent searches resolving to the brand's own
+published page.
+
+| Brand | Address | Outcome |
+|---|---|---|
+| Cooper's Small Batch | `info@cooperssmallbatch.com` | ✅ 2x, own retailer page. Rewrite already written. |
+| Jars of Dust | `sales@jarsofdust.com` | ✅ 2x, own wholesale page |
+| Beth's Farm Kitchen | `bfk@bethsfarmkitchen.com` | ✅ 2x, own contact page |
+| Notary Ceramics | disputed | ❌ sources disagree (`orders@` vs `hello@`) — not queued |
+| Savage Jerky | `info@savagejerkyco.com` | ⚠️ verified but owned by 2Bold Brands (also Perky Jerky). A roll-up, not a founder-voice brand. Deprioritized. |
+| Werther Leather, MION Soap, Seattle Granola | — | ❌ no published address; form-only. Not sendable. |
+
+Three rejections out of eight. That ratio is the rule working, not the rule
+failing — the alternative is guessing `firstname@` and burning the domain.
+
+**MX check on all five queued domains:** all resolve to Google Workspace. No
+dead domains in tomorrow's batch.
+
+**Queue for Sep 19 (cap 5):** Cooper's Small Batch, Jars of Dust, Beth's Farm
+Kitchen, Cascadia Coffee Roasters, Smart Cookie Barkery. Cooper's rewrite is
+done; the other four need one written before contact.
+
+**Inbox:** checked independently of the Routine — one DMARC report, nothing
+else. No replies, no bounces.
+
+**Metrics:** sent this cycle 0 (cap spent) · total own sends 21 · delivered 19 ·
+replies 0 · revenue $0 · **spent $0.00**

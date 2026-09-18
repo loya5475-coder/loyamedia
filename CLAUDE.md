@@ -137,3 +137,18 @@ then wrote a heartbeat — see `ops/heartbeat.log`. Gmail connector and
 `allowed_tools` both confirmed working end-to-end in an automated run. PayPal
 send-path is still unexercised (no invoice has been sent yet this cycle) —
 treat that path as configured, not proven, until a real invoice goes out.
+
+**Do NOT retry `create_trigger` with `connectors` (tested Sep 18).** That
+parameter now exists and would let an agent create a connectored Routine from
+inside a session. It returns `the connectors parameter is not available for
+this organization`. The inheritance gap is real; don't spend another call on it
+unless the org plan changes. And do **not** create a connector-less backup
+Routine — it can only write `BLIND RUN` heartbeats, which is noise, not
+coverage.
+
+**Cadence is stuck at 1x/day and only Jose can change it.** The live Routine was
+created in the UI (`created_via: http_api`), so agents get
+`Agents can only update routines they created` from `update_trigger`. Changing
+its cron to `0 14,17,20,23 * * *` would give four reply-checks a day instead of
+one — worth asking Jose for, not blocking. He edits it at
+https://claude.ai/code/routines/trig_01HK2ZEMbueLKMSp9TTcyVwM
