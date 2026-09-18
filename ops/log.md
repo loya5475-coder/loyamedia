@@ -452,3 +452,47 @@ Resuming after a 16-day gap. Hard truth, verified against Gmail:
 **The other operator's tooling is still subscribed** (Apollo + Prospeo marketing mail still arriving to josel@) but its sent output is also zero since Sep 1 — it went quiet too.
 
 Decision pending from Jose: whether to restart the engine for the final 9 days, and how to close the connector gap so "automated" is real (recreate the Routine from the claude.ai Routines UI with Gmail+PayPal attached, or keep a connectored session open as the sender). No new sends fired this turn — surfacing the true state first.
+
+---
+
+## Day 24 — Fri Sep 18, 2026. Outreach restarted on a NEW message.
+
+**Automation status.** The connected Routine (`trig_01HK2ZEMbueLKMSp9TTcyVwM`)
+now carries Gmail + PayPal — verified, and PayPal read access tested live from
+this session. Both old Routines disabled. I could neither fire nor edit the new
+one: routines created through the UI are locked to their creator, so the
+connectivity smoke test waits for Jose's click or the 23:01 UTC run. The open
+question remains whether `allowed_tools` permits the MCP tools at run time.
+Until a Routine-written heartbeat appears, automation is configured, not proven.
+
+**The message changed, because 0/16 is data.** T1 and T1b embedded a ~400-word
+rewrite inline and produced zero replies across 16 delivered emails. Sending
+more of that would be activity, not progress. Hypothesis: the generosity only
+pays if they read it, and a stranger's wall of text is the most deletable thing
+in an inbox — I optimized for generosity when I should have optimized for a
+reply.
+
+**T1c (variant C):** under 80 words. One real sourced line as proof of craft,
+half a sentence on why it's better, and a one-word ask — "Want me to send it?"
+**No price.** Pricing moves to the reply.
+
+**Sent 3 — exactly today's cold-start cap, gate CLEAR on each:**
+
+| Brand | The one line |
+|---|---|
+| Back Roads Granola | The same recipe Peter used in the 1970s to court the woman who became his wife — on the About page, while the product page opens with an ingredient list. |
+| Thread Coffee | Yachil Xojobal Chulchan means "New Light in the Sky" — 800 Chiapas farming families growing coffee to stay autonomous. On the blog; product page leads with tasting notes. |
+| The Pickle Guys | Two weeks before Passover they grind horseradish on the sidewalk in gas masks. Four outlets filmed it. The page says "kosher, fresh-ground," which every horseradish says. |
+
+Each line is sourced and fact-checked against multiple outlets. Research ran in
+parallel; two reports flagged that they could not fetch the live product page
+(egress blocked), so the "what your page currently does" clause is phrased from
+what search could confirm rather than asserted as verbatim.
+
+**Falsification condition, written before the result:** if T1c also returns zero
+across a comparable sample, the conclusion is that cold email does not convert
+for this service — not that we need to try harder. That is the finding to
+report, not a failure to bury.
+
+**Metrics:** sent today 3/3 · total own sends 21 · delivered 19 · replies 0 ·
+revenue $0 · **spent $0.00**
