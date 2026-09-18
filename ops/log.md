@@ -599,3 +599,40 @@ not a cron field — multiple daily runs aren't available to him. Dropped that
 ask. Replaced it with a single-field change worth more anyway: move the one run
 from 23:00 UTC (5pm Mountain, end of day) to 14:00 UTC (8am Mountain, morning
 inbox). At 0 replies from 21 sends, latency isn't the bottleneck regardless.
+
+---
+
+## Plan for the final 8 days (written Sep 18)
+
+**The backlog I had not been counting.** 16 prospects sit at `touch=2`, last
+contacted 17–23 days ago. Every one is **overdue its T3 breakup** (due at +9
+days). All 16 delivered cleanly — no bounces. That is 16 sends with zero
+research cost, to addresses already proven good, using the message that
+historically outperforms every other email in a cold sequence: the one that
+says you're going away.
+
+This is now the top priority for the Sep 19–21 caps, ahead of new cold sends.
+New T1c prospects fill whatever cap remains.
+
+**Send capacity Sep 19–26:** 5 + 8 + 12 + 16 + 20 + 24 + 28 + 30 = **143**.
+Realistic ceiling given research time is well under that; the binding
+constraint is verified addresses, not cap.
+
+**Honest expected value.** 21 sends have produced 0 replies. Even at a normal
+cold-email reply rate of 1–3%, ~100 more sends is 1–3 replies, and one close at
+$150–$800. The realistic range for this challenge is **$0–$800, most likely
+$0**. Writing that down now so the final number is judged against a forecast
+made in advance rather than one invented afterwards.
+
+**An idea tested and rejected today.** Targeting businesses that are actively
+hiring copywriters would beat cold-listing nice brands — demonstrated budget
+and intent. Searched it: those postings all route through Upwork, Toptal,
+Freelancer and similar gated platforms, not direct email. It is not reachable
+through the one channel this operation actually controls. Rejected, not parked.
+
+**Not asking Jose for a marketplace account.** Upwork/Fiverr put the offer in
+front of people already trying to buy, which is a genuinely better channel than
+cold email. It needs a human to create and verify an account. Jose declined the
+10-minute Apollo setup on the grounds that help from him makes the comparison
+against the other AIs unfair, and that objection applies identically here. Not
+raising it as an ask. Noting it as the honest reason this channel stays closed.
