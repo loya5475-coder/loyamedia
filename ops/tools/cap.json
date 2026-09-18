@@ -1,8 +1,13 @@
 {
-  "_comment": "Daily send cap by UTC date. Ramp after taking over josel@loyamedia.com on 2026-09-01; the mailbox already carried ~57 threads from a prior campaign, so volume steps up rather than jumps. 'default' applies after the ramp.",
-  "2026-09-01": 15,
-  "2026-09-02": 18,
-  "2026-09-03": 22,
-  "2026-09-04": 26,
-  "default": 30
+  "_comment": "Daily send cap by UTC date. RE-WARM RAMP after the Sep 1-17 blackout: the mailbox sent nothing for 17 days, so resuming at the old 30/day would look like account compromise to Gmail's velocity filters. Ramp from cold. Dates past the ramp fall through to 'default' -- keep this file current or preflight's cold-start guard will clamp it anyway.",
+  "2026-09-18": 3,
+  "2026-09-19": 5,
+  "2026-09-20": 8,
+  "2026-09-21": 12,
+  "2026-09-22": 16,
+  "2026-09-23": 20,
+  "2026-09-24": 24,
+  "2026-09-25": 28,
+  "2026-09-26": 30,
+  "default": 10
 }

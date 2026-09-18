@@ -14,10 +14,23 @@ tail -40 ops/log.md          # what actually happened last
 date -u                      # how long ago that was
 ```
 
-**If the last log entry is more than ~12 hours old, the operation has gone dark.
-Resume immediately — do not wait to be asked.** This has already happened once:
-a session closed, the scheduler died with it, and three days passed with no
-sends, costing a follow-up window on the money path.
+Better: run the health check, which does this and more:
+
+```bash
+python3 ops/tools/healthcheck.py
+```
+
+**If it reports DEGRADED, the operation has gone dark. Resume immediately — do
+not wait to be asked.** This has happened TWICE:
+- Sep 2–5: a session closed, the scheduler died with it, 3 days lost.
+- **Sep 1–17: 16 days lost.** A durable Routine fired ~60 times reporting
+  SUCCESS while running with no Gmail connector. It sent nothing and left no
+  trace, so dead days were indistinguishable from working days. Revenue impact:
+  the entire back half of the challenge.
+
+**The lesson is encoded, not remembered:** every automated run must end with
+`healthcheck.py --heartbeat "<what it did>"` and commit. A run that leaves no
+heartbeat did not happen.
 
 ## The resume sequence
 
@@ -34,7 +47,13 @@ sends, costing a follow-up window on the money path.
    actual copy *before* contact, then send T1.
 5. **Books.** Update `ops/prospects.csv`, `ops/scoreboard.md`, `ops/log.md` with
    real numbers. Commit and push to `claude/ai-money-challenge-9uvred`.
-6. **Re-arm the scheduler** (`CronList` → if empty, `CronCreate` every 3h).
+6. **Heartbeat, always:** `python3 ops/tools/healthcheck.py --heartbeat "<one
+   line on what this run actually did>"`, then commit and push. Runs that did
+   nothing still write a heartbeat — that is the point.
+
+**Before claiming a cycle ran: prove you can see.** Make one real Gmail call
+first. If Gmail tools are unavailable you are BLIND: write a `BLIND RUN`
+heartbeat, commit it, notify Jose, and stop. Never report success while blind.
 
 ## Sender identity and inherited threads (since Sep 1)
 
@@ -52,12 +71,20 @@ sends, costing a follow-up window on the money path.
 
 - **Never send without running the gate:**
   `python3 ops/tools/preflight.py <email> --source-verbatim` must print CLEAR.
+  Inherited threads additionally need `--bridge-in-thread` (they already heard
+  from this mailbox; a cold pitch would be the second stranger-pitch from one
+  address).
+- **If you add a status to `ops/prospects.csv`, add it to preflight's dedupe
+  list.** Renaming `sent` → `cold` on Sep 18 silently made 16 already-contacted
+  people sendable again until the regression test caught it.
 - **Addresses only from a brand's own published page** — wholesale/sales/orders
   pages quoted verbatim in search results. Never a guessed `firstname@` pattern.
   That mistake produced a 22% bounce rate on day one.
-- **Respect the ramped cap** in `ops/tools/cap.json`. The mailbox is the entire
-  revenue channel; a suspension ends the operation. No daily number is worth
-  that risk. No bursts of more than ~5 sends in an hour.
+- **Respect the ramped cap** in `ops/tools/cap.json`, and keep it current — its
+  dated entries go stale and fall through to `default`. A **cold-start guard**
+  in preflight clamps the cap to 3/day whenever the mailbox has been silent 7+
+  days; that clamp is correct, never work around it. The mailbox is the entire
+  revenue channel; a suspension ends the operation. No bursts >5/hour.
 - **Every email carries a genuine rewrite written for that specific brand.** The
   moment this becomes a mail merge it stops working and stops being honest.
 - **Rotate subject lines** per the pool in `ops/outreach/templates.md`.
@@ -81,6 +108,9 @@ sends, costing a follow-up window on the money path.
 | `ops/outreach/templates.md` | T1–T6 templates + deliverability rules |
 | `ops/outreach/apollo-playbook.md` | Sourcing method, rejected approaches |
 | `ops/tools/preflight.py` | Mandatory pre-send gate |
+| `ops/tools/healthcheck.py` | Run first and last in every cycle; writes heartbeat |
+| `ops/tools/cap.json` | Daily send caps (keep the ramp current) |
+| `ops/heartbeat.log` | Proof-of-life per run. Gaps here = dead days |
 | `ops/samples/` | Completed rewrites |
 
 ## Scheduler (durable, since Sep 2)
@@ -89,11 +119,17 @@ A durable server-side Routine now drives the cycle: `trig_01VBwM7Ny7ULjHQL5pZQKN
 firing 4×/day (14/17/20/23 UTC), spawning a fresh session that clones this repo,
 reads this file, and runs the resume sequence. It survives session death.
 
-**Caveat — the send gap:** a Routine created from inside a session does NOT
-inherit that session's MCP connectors, so the spawned sessions have no Gmail or
-PayPal. They can research, write, track, commit, push, and notify — but cannot
-send mail or invoice. To close the gap, re-create this Routine from the
-claude.ai Routines UI with Gmail + PayPal attached, OR keep a connector-holding
-session (the Mac mini) open as the sender. This file remains the recovery net if
-the Routine is ever lost. The old July drafting Routine (`trig_01HpBR83…`,
-pointed at the retired gmail.com inbox) was disabled Sep 2.
+**THE SEND GAP — still open, and it is what killed Sep 1–17.** A Routine created
+from inside a session does NOT inherit that session's MCP connectors
+(`mcp_connections: []`). Its sessions cannot send mail or invoice. As of Sep 18
+the Routine's prompt makes this *loud*: it proves Gmail access first, and if
+blind it writes a `BLIND RUN` heartbeat, commits it, notifies Jose, and stops.
+Silent no-ops are no longer possible — but the gap itself is not fixed in code
+and cannot be.
+
+**Only Jose can close it:** re-create this Routine from the claude.ai Routines
+UI with Gmail + PayPal attached, or keep a connector-holding session open as the
+sender. Until then the Routine is a watchdog, not an operator.
+
+The old July drafting Routine (`trig_01HpBR83…`, aimed at the retired gmail.com
+inbox) was disabled Sep 2.
