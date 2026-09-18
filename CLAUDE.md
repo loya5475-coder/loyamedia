@@ -146,9 +146,18 @@ unless the org plan changes. And do **not** create a connector-less backup
 Routine — it can only write `BLIND RUN` heartbeats, which is noise, not
 coverage.
 
-**Cadence is stuck at 1x/day and only Jose can change it.** The live Routine was
-created in the UI (`created_via: http_api`), so agents get
-`Agents can only update routines they created` from `update_trigger`. Changing
-its cron to `0 14,17,20,23 * * *` would give four reply-checks a day instead of
-one — worth asking Jose for, not blocking. He edits it at
+**Cadence is 1x/day and only Jose can change it.** The live Routine was created
+in the UI (`created_via: http_api`), so agents get `Agents can only update
+routines they created` from `update_trigger`. The UI exposes a single time
+picker, not a cron field — Jose reported he cannot enter multiple run times, so
+do not keep asking for `0 14,17,20,23 * * *`.
+
+The ask that actually matters is **moving the one run from 23:00 to 14:00 UTC**.
+23:00 UTC is 5pm Mountain: cold mail landing at end of day, the worst slot for
+B2B open rates. 14:00 UTC is 8am Mountain — lands in the morning inbox and still
+sweeps overnight replies. One field, big delta. He edits it at
 https://claude.ai/code/routines/trig_01HK2ZEMbueLKMSp9TTcyVwM
+
+And keep this in proportion: at 21 sends and 0 replies, reply *latency* is not
+the bottleneck. Response rate is. Do not spend Jose's attention on scheduling
+when the offer is the open question.

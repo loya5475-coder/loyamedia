@@ -566,3 +566,36 @@ else. No replies, no bounces.
 
 **Metrics:** sent this cycle 0 (cap spent) · total own sends 21 · delivered 19 ·
 replies 0 · revenue $0 · **spent $0.00**
+
+**Rewrites written (same cycle).** All four outstanding prospects in the Sep 19
+queue now have finished rewrites in `ops/samples/batch-02.md`, so tomorrow's cap
+is pure execution. Two research catches worth recording:
+
+- **Beth's Farm Kitchen — nearly a blunder.** Beth Linskey sold the business in
+  2016 to Guillermo Maciel and Jodie Emmett. An email opening "Hi Beth" would
+  have announced itself as untargeted mail from someone who didn't read the
+  About page. Flagged in the tracker and in batch-02.
+- **Cascadia Coffee — a bad note of my own, corrected.** The tracker called
+  `Jodi@cascadiaroasters.com` an "OWNER-NAMED email." The founders are Jason and
+  Susan Thomas; Jodi is the wholesale contact. The *address* verified fine
+  (published on their wholesale-inquiries page) — the label was wrong, and
+  addressing her as the founder would have been the same failure as above.
+
+Hooks found, all sourced: Cascadia's Jason roasted his first beans in a popcorn
+maker while Susan worked 90-hour weeks managing someone else's shop; Jars of
+Dust's Mallorie has thrown clay since middle school and ran the studio from her
+garage; Smart Cookie sold its first treats off a wooden tricycle and is now in
+~400 stores.
+
+**A judgement call on Smart Cookie.** Their founding story is their dog's
+lymphoma and Bri's breast cancer at 24 — published by them, on their own About
+page. That makes it fair to work with, but leading a cold email with a
+stranger's cancer would be mining it. The email hook is the tricycle, equally
+true and equally arresting. The diagnosis stays in the long-form rewrite, in
+their own voice.
+
+**Scheduler ask, revised.** Jose reported the Routines UI gives one time picker,
+not a cron field — multiple daily runs aren't available to him. Dropped that
+ask. Replaced it with a single-field change worth more anyway: move the one run
+from 23:00 UTC (5pm Mountain, end of day) to 14:00 UTC (8am Mountain, morning
+inbox). At 0 replies from 21 sends, latency isn't the bottleneck regardless.
