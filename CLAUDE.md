@@ -113,23 +113,26 @@ heartbeat, commit it, notify Jose, and stop. Never report success while blind.
 | `ops/heartbeat.log` | Proof-of-life per run. Gaps here = dead days |
 | `ops/samples/` | Completed rewrites |
 
-## Scheduler (durable, since Sep 2)
+## Scheduler (since Sep 18 — send gap CLOSED)
 
-A durable server-side Routine now drives the cycle: `trig_01VBwM7Ny7ULjHQL5pZQKN8E`,
-firing 4×/day (14/17/20/23 UTC), spawning a fresh session that clones this repo,
-reads this file, and runs the resume sequence. It survives session death.
+**Live Routine: `trig_01HK2ZEMbueLKMSp9TTcyVwM`** — "Loya Media — outreach cycle
+(connected)", fires **daily at 23:00 UTC**. Created from the claude.ai Routines
+UI, so it carries real connectors: **Gmail and PayPal are attached and verified**
+(`mcp_connections` is populated; PayPal read access confirmed Sep 18). It can
+send mail and raise invoices. Push notifications on.
 
-**THE SEND GAP — still open, and it is what killed Sep 1–17.** A Routine created
-from inside a session does NOT inherit that session's MCP connectors
-(`mcp_connections: []`). Its sessions cannot send mail or invoice. As of Sep 18
-the Routine's prompt makes this *loud*: it proves Gmail access first, and if
-blind it writes a `BLIND RUN` heartbeat, commits it, notifies Jose, and stops.
-Silent no-ops are no longer possible — but the gap itself is not fixed in code
-and cannot be.
+Its prompt carries explicit git commands because the Routines UI exposes no
+output-branch field — the configured branch is a throwaway name, so every run
+must `git checkout claude/ai-money-challenge-9uvred` and
+`git push origin HEAD:claude/ai-money-challenge-9uvred`. If a future run's work
+goes missing, check whether it pushed to the throwaway branch instead.
 
-**Only Jose can close it:** re-create this Routine from the claude.ai Routines
-UI with Gmail + PayPal attached, or keep a connector-holding session open as the
-sender. Until then the Routine is a watchdog, not an operator.
+**Superseded:** `trig_01VBwM7Ny7ULjHQL5pZQKN8E` (connector-less, caused the
+Sep 1–17 blackout) — disabled Sep 18. `trig_01HpBR83…` (July drafting agent on
+the retired gmail.com inbox) — disabled Sep 2. Do not re-enable either.
 
-The old July drafting Routine (`trig_01HpBR83…`, aimed at the retired gmail.com
-inbox) was disabled Sep 2.
+**NOT YET PROVEN:** as of Sep 18 03:40 UTC the new Routine has never fired. Its
+first run is 23:01 UTC. Until a heartbeat line appears in `ops/heartbeat.log`
+written by a Routine run (not by a human session), treat end-to-end automation
+as untested. The specific unknown is whether the session's `allowed_tools`
+config permits the MCP tools even though the connectors are attached.
