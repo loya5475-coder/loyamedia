@@ -223,3 +223,47 @@ researched, ready to publish. The full catalog rewrite is $800 flat for up to
 All mail goes from `josel@loyamedia.com` (Workspace, SPF/DKIM/DMARC aligned).
 The 9 threads started from jose.loyamedia@gmail.com get their final touch as a
 fresh message from josel@ with "Re: <original subject>" for continuity.
+
+---
+
+## T1c — Short form (the 0/16 response)
+
+**Why this exists.** T1 and T1b delivered 16 emails and got **zero replies**.
+Both embed the full rewrite inline, ~400 words. The generosity only pays off if
+the recipient reads it, and a stranger's wall of text is the single most
+skippable thing in an inbox. T1c tests the opposite hypothesis: prove craft with
+ONE line, ask for a one-word yes, and let them opt into the reading.
+
+Under 80 words above the signature. Subject is lowercase and specific — it looks
+like a note from a person, not a campaign.
+
+**Subject:** `your {{product}} page`
+
+```
+Hi {{first_name}} — I rewrote your {{product}} page. Here's the opening line
+I'd use:
+
+"{{the_one_line}}"
+
+{{one_clause_on_why}}. The rest is about 100 words, written already, yours
+free either way.
+
+Want me to send it?
+
+{{signature}}
+```
+
+Rules:
+- `the_one_line` must be a real, sourced fact about that brand — the single most
+  arresting true sentence available. If research didn't surface one, do not send.
+- `one_clause_on_why` is half a sentence, not a paragraph. Example: "Right now
+  that's on your About page and the product page opens with an ingredient list."
+- The ask is **"Want me to send it?"** — a one-word yes. Never a price. Pricing
+  comes on reply, via T5.
+- No links. No attachments. No second CTA.
+
+**What we're measuring:** reply rate of T1c vs the 0/16 from T1/T1b. Record
+`variant=C` in the tracker. If T1c also returns zero across a comparable sample,
+the problem is not length — it is the offer or the audience, and the honest
+conclusion is that cold email for this service does not convert, which is a
+finding worth reporting rather than a failure to hide.
