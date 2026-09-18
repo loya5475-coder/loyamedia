@@ -496,3 +496,24 @@ report, not a failure to bury.
 
 **Metrics:** sent today 3/3 · total own sends 21 · delivered 19 · replies 0 ·
 revenue $0 · **spent $0.00**
+
+---
+
+## Day 24 cont'd — Fri Sep 18, 2026, later cycle (scheduled run)
+
+**Proved sight first.** Gmail `in:inbox newer_than:2d` returned 6 real threads
+(Workspace/Apollo/DMARC automated mail only) — connector confirmed live, not
+blind. This is the first Routine-fired heartbeat since the Sep 18 03:40 "NOT
+YET PROVEN" note in CLAUDE.md, so end-to-end automation is now demonstrated.
+
+- **Bounces:** `from:mailer-daemon OR from:postmaster newer_than:2d` → none.
+- **Replies:** `in:inbox newer_than:3d -category:promotions -from:dmarc
+  -from:noreply` → none. No genuine human reply this cycle.
+- **Follow-ups / new outreach:** `preflight.py` returned `BLOCKED: daily cap
+  reached (3/3); resume tomorrow` — today's cold-start-ramp cap (3) was
+  already spent by the earlier T1c batch this same day. Correctly did not
+  send anything further; cap discipline held.
+
+**Metrics:** sent this cycle 0 (cap exhausted) · today's total unchanged at
+3/3 · total own sends 21 · delivered 19 · replies 0 · revenue $0 · spent
+$0.00

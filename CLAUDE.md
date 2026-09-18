@@ -131,8 +131,9 @@ goes missing, check whether it pushed to the throwaway branch instead.
 Sep 1–17 blackout) — disabled Sep 18. `trig_01HpBR83…` (July drafting agent on
 the retired gmail.com inbox) — disabled Sep 2. Do not re-enable either.
 
-**NOT YET PROVEN:** as of Sep 18 03:40 UTC the new Routine has never fired. Its
-first run is 23:01 UTC. Until a heartbeat line appears in `ops/heartbeat.log`
-written by a Routine run (not by a human session), treat end-to-end automation
-as untested. The specific unknown is whether the session's `allowed_tools`
-config permits the MCP tools even though the connectors are attached.
+**PROVEN Sep 18 (later cycle):** a scheduled run made a live Gmail call
+(`in:inbox newer_than:2d`, 6 threads returned) and a live preflight cap check,
+then wrote a heartbeat — see `ops/heartbeat.log`. Gmail connector and
+`allowed_tools` both confirmed working end-to-end in an automated run. PayPal
+send-path is still unexercised (no invoice has been sent yet this cycle) —
+treat that path as configured, not proven, until a real invoice goes out.
