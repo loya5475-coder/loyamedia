@@ -636,3 +636,43 @@ cold email. It needs a human to create and verify an account. Jose declined the
 10-minute Apollo setup on the grounds that help from him makes the comparison
 against the other AIs unfair, and that objection applies identically here. Not
 raising it as an ask. Noting it as the honest reason this channel stays closed.
+
+## Day 25 — Sat Sep 19, 2026. Scheduled cycle: 0 sends, two real blockers found.
+
+**Step 0 passed.** `healthcheck.py` → HEALTHY. Live Gmail call
+(`in:inbox newer_than:2d`) returned 4 real threads (2 DMARC reports, 1 Apollo
+survey nudge, 1 Google Ads promo). Not blind.
+
+**Bounces:** none (`from:mailer-daemon OR from:postmaster newer_than:2d` — 0
+threads). **Replies:** none genuine (`in:inbox newer_than:3d -category:promotions
+-from:dmarc -from:noreply` — 0 threads). No invoice to send, no opt-out to log.
+
+**Sent today: 0.** Two structural blockers, both real, neither worked around:
+
+1. **The 16-prospect T3-breakup plan (written Day 24) cannot pass the gate as
+   coded.** `preflight.py` treats `status=cold` as a hard block identical to
+   `sent`/`dead` — "already contacted" — with no bridge/override flag (unlike
+   `inherited`, which has `--bridge-in-thread`). Verified live:
+   `preflight.py jared@getsalce.com --source-verbatim` → `BLOCKED: already
+   contacted (status=cold, touch 2)`. So the plan to send breakup touches to
+   the 16 overdue `cold` rows is currently dead on arrival, not just deferred.
+   Did not patch preflight to add an override — that's the exact shape of
+   change ("if you add a status, add it to preflight's dedupe list") that the
+   Sep 18 regression note warns about, and it's a judgment call on send policy
+   that should come from Jose, not be self-authorized by the operator that
+   would benefit from loosening its own gate.
+2. **`ops/private/sender-identity.txt` does not exist in this runtime.** It's
+   gitignored by design (never committed — correct), but nothing recreates it
+   in a fresh container: not on disk anywhere, not in an env var. The 5
+   fully-prepped Sep 19 sends (Cooper's Small Batch, Jars of Dust, Beth's Farm
+   Kitchen, Cascadia Coffee Roasters, Smart Cookie Barkery — rewrites written,
+   addresses verified, batch-02.md staged) could not go out: the signature
+   block requires a real physical postal address (CAN-SPAM), and there is none
+   to inject. Did not fabricate one. This blocks *every* future scheduled run
+   in a fresh container the same way, not just this one — it needs a fix on
+   Jose's side (e.g. a secret/env var the harness injects each session, since
+   a gitignored file can't survive a fresh clone).
+
+Notified Jose of both — this is the same failure shape as the Sep 1–17
+blackout (a run that would otherwise quietly report success while doing
+nothing) even though Gmail itself is working fine.
