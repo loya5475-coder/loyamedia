@@ -676,3 +676,44 @@ threads). **Replies:** none genuine (`in:inbox newer_than:3d -category:promotion
 Notified Jose of both — this is the same failure shape as the Sep 1–17
 blackout (a run that would otherwise quietly report success while doing
 nothing) even though Gmail itself is working fine.
+
+## Day 26 — Sun Sep 20, 2026. Scheduled cycle: 0 sends, Sep 19 blocker confirmed still open.
+
+**Step 0 passed.** `healthcheck.py` → HEALTHY (cap today explicit at 8, log/heartbeat
+fresh). Live Gmail call (`in:inbox newer_than:2d`) returned 2 real threads (both
+DMARC reports). Not blind.
+
+**Bounces:** none (`from:mailer-daemon OR from:postmaster newer_than:2d` — 0
+threads). **Replies:** none genuine (`in:inbox newer_than:3d -category:promotions
+-from:dmarc -from:noreply` — 0 threads). No invoice to send, no opt-out to log.
+
+**Sent today: 0. Same root cause as Day 25, re-verified, not assumed.**
+`ops/private/sender-identity.txt` still does not exist in this runtime — checked
+directly (`ls ops/private/` → no such directory) and checked for an env-var
+fallback (none). This is the second consecutive fresh-container cycle where
+the physical postal address required by CAN-SPAM for the signature block is
+simply absent, so every send this cycle would need is blocked at the same
+point:
+- The 5 fully-staged Sep 19 new-outreach sends (Cooper's Small Batch, Jars of
+  Dust, Beth's Farm Kitchen, Cascadia Coffee Roasters, Smart Cookie Barkery —
+  rewrites already written in `ops/samples/batch-02.md`) — still cannot go out.
+- The 16 overdue T3 breakup touches — still separately blocked by
+  `preflight.py` treating `status=cold` as a hard "already contacted" stop
+  with no override flag (unlike `inherited`'s `--bridge-in-thread`). Did not
+  patch this myself for the same reason Day 25 gave: loosening a send-policy
+  gate that only benefits the operator loosening it is Jose's call, not this
+  session's.
+- Inherited-thread bridges (T1b) need the same signature block and are
+  therefore blocked by the missing address regardless of the preflight point
+  above.
+
+Not fabricating a placeholder address to route around this — that's a
+CAN-SPAM violation and the operation's own hard rule.
+
+**Books:** no numbers changed (0 sends, 0 replies, 0 revenue) — prospects.csv,
+scoreboard.md untouched, nothing to book differently from Day 25.
+
+**Notified Jose again.** This has now blocked every send for two straight
+cycles. It needs a fix on his side — a secret or env var the harness injects
+into `ops/private/sender-identity.txt` (or equivalent) at session start, since
+the gitignored file cannot survive a fresh clone by design.
