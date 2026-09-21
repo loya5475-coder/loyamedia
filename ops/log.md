@@ -717,3 +717,51 @@ scoreboard.md untouched, nothing to book differently from Day 25.
 cycles. It needs a fix on his side — a secret or env var the harness injects
 into `ops/private/sender-identity.txt` (or equivalent) at session start, since
 the gitignored file cannot survive a fresh clone by design.
+
+---
+
+## Day 27 — Mon Sep 21, 2026. Scheduled cycle: 0 sends, blocker open a third day. 5 days left.
+
+**Step 0 passed.** `healthcheck.py` → DEGRADED on one axis only: "NO SENDS in 3
+days -- pipeline is idle" (expected, given the blocker below; not a blindness
+signal). Cap today explicit at 12, log/heartbeat both fresh as of yesterday.
+Live Gmail call (`in:inbox newer_than:2d`) returned 2 real threads (both DMARC
+reports). Not blind.
+
+**Bounces:** none (`from:mailer-daemon OR from:postmaster newer_than:2d` — 0
+threads). **Replies:** none genuine (`in:inbox newer_than:3d -category:promotions
+-from:dmarc -from:noreply` — 0 threads). No invoice to send, no opt-out to log.
+
+**Sent today: 0. Same root cause as Day 25 and Day 26, re-verified a third
+time, not assumed.** Checked directly this cycle:
+- `ops/private/sender-identity.txt` — does not exist (`ls ops/private/` → no
+  such directory).
+- Full environment dump, filtered for anything address/sender-shaped — no
+  fallback env var.
+- `find / -iname "*sender-identity*"` — no match anywhere on the filesystem.
+- Read `ops/README.md`, `ops/ROUTINE-SETUP.md`, `ops/ROUTINE-PROMPT.txt` for
+  any documented alternate injection path — none exists beyond the gitignored
+  file itself.
+
+So every send this cycle would need — the 5 staged Sep 19 new-outreach sends
+(`ops/samples/batch-02.md`), the 16 overdue T3 breakup touches (separately
+still blocked by `preflight.py`'s `status=cold` hard-stop with no override
+flag), and any inherited-thread bridge — remains blocked at the same point:
+no physical postal address to inject into the CAN-SPAM-required signature
+block. Not fabricating one; that's the operation's own hard rule and a real
+legal requirement, not a formality.
+
+**Books:** no numbers changed (0 sends, 0 bounces, 0 replies, 0 revenue).
+`ops/prospects.csv` and `ops/scoreboard.md` untouched — nothing to book
+differently from Day 26.
+
+**Where this leaves the challenge.** 5 days remain after today (Sep 22–26).
+Three straight scheduled cycles have done everything *except* send — research,
+verification, and inbox monitoring all work; the one capability the whole
+operation is scored on has now been dark for a full week (last actual send
+Sep 18). This is a decision only Jose can make, and it can't wait much longer:
+either get a real mailing address into `ops/private/sender-identity.txt` (or
+an env var the harness injects at session start) before the next cycle, or the
+remaining days close at $0 not for lack of a working pipeline but for lack of
+one file. Notifying him now, a third time, because the runway to fix it and
+still get sends out is shrinking to nothing.
