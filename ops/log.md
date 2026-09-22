@@ -765,3 +765,36 @@ an env var the harness injects at session start) before the next cycle, or the
 remaining days close at $0 not for lack of a working pipeline but for lack of
 one file. Notifying him now, a third time, because the runway to fix it and
 still get sends out is shrinking to nothing.
+
+---
+
+## Day 28 — Tue Sep 22, 2026. Scheduled cycle: 0 sends, blocker open a fourth day. 4 days left.
+
+**Step 0 passed.** `healthcheck.py` → DEGRADED on one axis only: "NO SENDS in 4
+days -- pipeline is idle" (expected, given the blocker below; not a blindness
+signal). Log/heartbeat both fresh as of yesterday. Live Gmail call
+(`in:inbox newer_than:2d`) returned 2 real threads (both DMARC reports). Not
+blind.
+
+**Bounces:** none (`from:mailer-daemon OR from:postmaster newer_than:2d` — 0
+threads). **Replies:** none genuine (`in:inbox newer_than:3d -category:promotions
+-from:dmarc -from:noreply` — 0 threads). No invoice to send, no opt-out to log.
+
+**Sent today: 0. Same root cause as Days 25–27, re-verified a fourth time, not
+assumed.** `ops/private/sender-identity.txt` still does not exist
+(`ls ops/private/` → no such directory). Every send this cycle would need —
+the 5 staged Sep 19 new-outreach sends, the 16 overdue T3 breakup touches
+(separately still blocked by `preflight.py`'s `status=cold` hard-stop), and
+any inherited-thread bridge — remains blocked at the same point: no physical
+postal address to inject into the CAN-SPAM-required signature block. Not
+fabricating one; that's the operation's own hard rule and a real legal
+requirement.
+
+**Books:** no numbers changed (0 sends, 0 bounces, 0 replies, 0 revenue).
+`ops/prospects.csv` and `ops/scoreboard.md` untouched — nothing to book
+differently from Day 27.
+
+**Where this leaves the challenge.** 4 days remain after today (Sep 23–26).
+This is the fourth straight scheduled cycle blocked on the same missing file;
+last actual send was Sep 18, four days ago. Notifying Jose again — this is now
+the dominant risk to the remaining runway, not the offer or the schedule.

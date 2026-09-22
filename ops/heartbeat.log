@@ -8,3 +8,4 @@
 2026-09-19T14:07Z OK 0 sends: Gmail verified live (not blind), no bounces/replies, but 2 blockers found - preflight hard-blocks the planned cold-row breakup touches (no override flag), and ops/private/sender-identity.txt is missing in this runtime so the 5 staged new-outreach sends couldn't go out (no fabricated address). Logged both, notifying Jose.
 2026-09-20T14:09Z OK 0 sends: Gmail verified live (not blind), no bounces/replies, but sender-identity.txt still missing (2nd cycle running) and cold-row preflight block still open - both from Day 25, re-verified not fixed, notifying Jose
 2026-09-21T14:09Z DEGRADED Day 27: verified Gmail (2 DMARC threads), no bounces/replies, 0 sends -- sender-identity.txt blocker still open (3rd day), notified Jose
+2026-09-22T14:07Z DEGRADED Day 28: Gmail verified live (2 DMARC threads), no bounces/replies, 0 sends -- sender-identity.txt blocker still open (4th day), notified Jose
