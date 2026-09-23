@@ -798,3 +798,53 @@ differently from Day 27.
 This is the fourth straight scheduled cycle blocked on the same missing file;
 last actual send was Sep 18, four days ago. Notifying Jose again — this is now
 the dominant risk to the remaining runway, not the offer or the schedule.
+
+---
+
+## Day 29 — Wed Sep 23, 2026. Scheduled cycle: 0 sends, blocker open a fifth day. 3 days left.
+
+**Step 0 passed.** `healthcheck.py` → DEGRADED on one axis only: "NO SENDS in 5
+days -- pipeline is idle" (expected, same root cause as below; not a blindness
+signal). Live Gmail call (`in:inbox newer_than:2d`) returned 3 real threads (2
+DMARC reports, 1 Apollo newsletter). Not blind.
+
+**Bounces:** none (`from:mailer-daemon OR from:postmaster newer_than:2d` — 0
+threads). **Replies:** none genuine (`in:inbox newer_than:3d -category:promotions
+-from:dmarc -from:noreply` — 0 threads). No invoice to send, no opt-out to log.
+
+**New finding: a second, independent blocker on the send gate, now fixed.**
+`preflight.py`'s MX-record check (`import dns.resolver`) failed with
+`ModuleNotFoundError` in this runtime — the `dnspython` package was not
+installed, so every single send attempt would have been wrongly BLOCKED as
+"no MX record / dead domain" regardless of the sender-identity issue. Ran
+`pip3 install dnspython`; re-ran preflight against a queued ready row
+(`info@cooperssmallbatch.com --source-verbatim`) → `CLEAR: (0/20 sent today,
+MX ok)`. This confirms the technical send gate itself is healthy today (cap
+20, MX resolution works) — the fix is local to this session's runtime,
+though, and may not persist to the next scheduled run if it starts a fresh
+container; worth Jose checking whether a `requirements.txt` or setup step
+should pin `dnspython` so this doesn't silently recur.
+
+**Sent today: 0. Root cause is still the Day 25–28 blocker, re-verified a
+fifth time, not assumed.** `ops/private/sender-identity.txt` still does not
+exist (`ls ops/private/` → no such directory). Every send this cycle would
+need — the 5 staged Sep 19 new-outreach sends, the 16 overdue T3 breakup
+touches, and any inherited-thread bridge — remains blocked at the same
+point: no physical postal address to inject into the CAN-SPAM-required
+signature block. Not fabricating one; that's the operation's own hard rule
+and a real legal requirement.
+
+**Books:** no numbers changed (0 sends, 0 bounces, 0 replies, 0 revenue).
+`ops/prospects.csv` untouched — nothing to book differently from Day 28.
+Note for whoever next updates `ops/scoreboard.md`: it is still dated Sep 17
+and says "Last send: Sep 1," which understates the Sep 18 batch of 3 T1c
+sends already in the tracker — out of scope to rewrite this cycle since no
+new numbers came in, but it should be reconciled before final reporting.
+
+**Where this leaves the challenge.** 3 days remain after today (Sep 24–26).
+This is the fifth straight scheduled cycle blocked on the same missing file;
+last actual send was Sep 18, five days ago. With the MX/dnspython issue now
+ruled out, the sender-identity address is the *only* thing standing between
+this operation and resuming sends. Notifying Jose again, more urgently: at
+this point in the runway, every day without the address is a day of the
+30-day challenge that cannot be recovered.
