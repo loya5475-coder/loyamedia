@@ -890,3 +890,40 @@ already-warm threads) can realistically land and get a reply before the
 challenge closes. Notifying Jose again, as urgently as this gets: the
 operation has been fully capable of sending for six straight days and has
 sent nothing, for lack of one file only he can supply.
+
+---
+
+## Day 31 — Fri Sep 25, 2026. Scheduled cycle: 0 sends, blocker open a seventh day. LAST DAY of the challenge (deadline Sep 26).
+
+**Step 0 passed.** Live Gmail call (`in:inbox newer_than:2d`) returned 3 real
+threads (1 DMARC report, 2 Apollo marketing). Not blind.
+
+**Bounces:** none (`from:mailer-daemon OR from:postmaster newer_than:2d` — 0
+threads). **Replies:** none genuine (`in:inbox newer_than:3d -category:promotions
+-from:dmarc -from:noreply` — 0 threads). No invoice to send, no opt-out to log.
+
+**Sent today: 0. Same root cause as Days 25–30, re-verified a seventh time,
+not assumed.** `ops/private/sender-identity.txt` still does not exist
+(`ls ops/private` → no such directory); `find / -iname "*sender-identity*"`
+found no copy anywhere on the filesystem; no env-var fallback
+(`env | grep -iE "address|sender|mailing|postal"` → nothing usable). Cap
+today is explicitly ramped to 28 (`ops/tools/cap.json`) and the technical
+send gate is otherwise healthy — the only thing stopping every send (the 5
+staged Sep 19 rewrites, the 16 overdue T3 breakups, any inherited-thread
+bridge) is the missing CAN-SPAM physical address for the signature block.
+Not fabricating one; that is the operation's own hard rule and a real legal
+requirement.
+
+**Books:** no numbers changed (0 sends, 0 bounces, 0 replies, 0 revenue).
+`ops/prospects.csv` and `ops/scoreboard.md` untouched — nothing to book
+differently from Day 30.
+
+**Where this leaves the challenge.** Today is the last full day before the
+Sep 26 deadline. The blocker has now stood for a full week (Sep 19–25) across
+seven consecutive scheduled cycles, each independently re-verifying it rather
+than assuming it. Every other part of the pipeline has worked the entire
+time — inbox monitoring, bounce/reply detection, research, and the technical
+send gate — but zero revenue is possible without this one file, and there is
+effectively no time left for Jose to supply it and still get a send out
+before the deadline. Notified Jose directly (push) given today is the last
+day it could still matter.

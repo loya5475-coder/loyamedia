@@ -11,3 +11,4 @@
 2026-09-22T14:07Z DEGRADED Day 28: Gmail verified live (2 DMARC threads), no bounces/replies, 0 sends -- sender-identity.txt blocker still open (4th day), notified Jose
 2026-09-23T14:15Z DEGRADED Day 29: Gmail verified live (3 threads), no bounces/replies, 0 sends -- sender-identity.txt blocker still open (5th day); found+fixed a second blocker (missing dnspython dep broke preflight's MX check for everyone, not just us); notified Jose
 2026-09-24T14:15Z DEGRADED Day 30: Gmail verified live (4 threads), no bounces/replies, 0 sends -- sender-identity.txt blocker still open (6th day, 2 days left in challenge); re-fixed local dnspython gap; notified Jose
+2026-09-25T14:15Z DEGRADED Day 31 (last day, deadline Sep 26): Gmail verified live (3 threads, none genuine), no bounces/replies, 0 sends -- sender-identity.txt blocker still open (7th consecutive day), notified Jose
