@@ -12,17 +12,38 @@ Layers, in order:
   3. daily send cap (ramped)    -> from ops/tools/cap.json; hard block
   4. MX record on domain        -> hard block if absent (catches dead domains
                                    ONLY; a live MX does not prove the mailbox
-                                   exists -- both Aug-26 bounces had live MX)
+                                   exists -- both Aug-26 bounces had live MX).
+                                   Requires the dnspython package (see
+                                   ops/tools/requirements.txt) -- if it is
+                                   missing this blocks with a clear tooling
+                                   error, it never reports a false "dead domain".
   5. cold-start guard           -> if the mailbox has been silent >=7 days, the
                                    effective cap is clamped to 3 regardless of
                                    cap.json. Resuming at full volume after a
                                    silence reads as account compromise.
-  6. --source-verbatim flag     -> sender attests address was copied verbatim
+  6. physical mailing address   -> hard block if unavailable. CAN-SPAM requires
+                                   one in every commercial email (see
+                                   templates.md signature block). Read from
+                                   gitignored ops/private/sender-identity.txt,
+                                   falling back to the LOYAMEDIA_MAILING_ADDRESS
+                                   env var. The gitignored file does NOT survive
+                                   a fresh clone -- an unattended/scheduled run
+                                   in a fresh container has no address unless
+                                   the environment sets that env var.
+  7. --source-verbatim flag     -> sender attests address was copied verbatim
                                    from the brand's own page; absent = block
 """
-import csv, sys, datetime, pathlib
+import csv, os, sys, datetime, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
+
+def sender_address():
+    f = ROOT / "ops/private/sender-identity.txt"
+    if f.exists():
+        text = f.read_text().strip()
+        if text:
+            return text
+    return os.environ.get("LOYAMEDIA_MAILING_ADDRESS", "").strip() or None
 def daily_cap(rows=None):
     """Ramped cap from ops/tools/cap.json, clamped to 3 after a >=7 day silence.
 
@@ -91,9 +112,22 @@ def main():
 
     try:
         import dns.resolver
+    except ImportError:
+        fail(f"dnspython not installed in this environment -- "
+             f"pip install -r ops/tools/requirements.txt. This is a tooling gap, "
+             f"NOT evidence {domain} is dead -- do not mark this prospect dead "
+             f"based on this failure.")
+    try:
         dns.resolver.resolve(domain, "MX", lifetime=8)
     except Exception as e:
         fail(f"no MX record for {domain} ({type(e).__name__}) -- dead domain")
+
+    if not sender_address():
+        fail("no physical mailing address available -- ops/private/sender-identity.txt "
+             "is missing and LOYAMEDIA_MAILING_ADDRESS is unset. CAN-SPAM requires a "
+             "real postal address in every commercial email. Do not send without one; "
+             "do not fabricate one. This needs Jose to set the env var (the gitignored "
+             "file does not survive a fresh clone).")
 
     if "--source-verbatim" not in sys.argv:
         fail("missing --source-verbatim: attest the address was copied "

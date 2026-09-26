@@ -1,6 +1,13 @@
-# Scoreboard — Aug 26 → Sep 26, 2026 · updated Sep 17 (BLACKOUT AUDIT)
+# Scoreboard — Aug 26 → Sep 26, 2026 · updated Sep 26 (DEADLINE DAY CLOSE-OUT)
 
-## STATUS: DARK since Sep 1. 16 days no activity. 9 days to deadline.
+## STATUS: Declared 30-day window closes today at $0 revenue.
+16 days lost to a connector-less trigger (Sep 1-17). A further 8 days
+(Sep 19-26) lost to a missing physical-address file that a fresh container
+clone cannot persist -- every other part of the pipeline (Gmail, bounce/reply
+detection, research, rewrites, the send gate) worked the whole time. Net: 24
+of 30 days unable to send, for two sequential, fixable, non-product reasons.
+See ops/log.md Day 32 for the full accounting and the one remaining unblock
+(a LOYAMEDIA_MAILING_ADDRESS env var Jose has not yet set).
 
 | Metric | Actual | 30-day target |
 |---|---|---|

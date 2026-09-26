@@ -927,3 +927,67 @@ send gate — but zero revenue is possible without this one file, and there is
 effectively no time left for Jose to supply it and still get a send out
 before the deadline. Notified Jose directly (push) given today is the last
 day it could still matter.
+
+## Day 32 — Sat Sep 26, 2026. Scheduled cycle: 0 sends, blocker open an eighth day. **DEADLINE DAY — the declared 30-day window (Aug 26 – Sep 26) closes today.**
+
+**Step 0 passed.** Live Gmail call (`in:inbox newer_than:2d`) returned 1 real
+thread (Apollo marketing). Not blind.
+
+**Bounces:** none (`from:mailer-daemon OR from:postmaster newer_than:2d` — 0
+threads). **Replies:** none genuine (`in:inbox newer_than:3d -category:promotions
+-from:dmarc -from:noreply` — 0 threads). No invoice to send, no opt-out to log.
+
+**Sent today: 0. Same root cause as Days 25–31, re-verified an eighth time,
+not assumed.** `ops/private/sender-identity.txt` still does not exist in this
+fresh container; no `LOYAMEDIA_MAILING_ADDRESS` (or similar) env var found. The
+5 staged Sep 19 rewrites, the ~16 overdue T3/breakup touches, and every
+inherited-thread bridge remain unsendable. Not fabricating a placeholder
+address — CAN-SPAM requires a real one, and this operation's own hard rule
+forbids it.
+
+**Two real fixes committed today (not just re-verified — actually fixed in
+code this time, so they persist across future clones):**
+1. `ops/tools/preflight.py`'s MX check crashed with `ModuleNotFoundError`
+   whenever `dnspython` wasn't installed (true every fresh clone) and
+   mislabeled that crash as `BLOCKED: no MX record ... dead domain`. That is
+   dangerous: a future operator could read "dead domain" on a verified,
+   corroborated prospect (e.g. Jars of Dust, Beth's Farm Kitchen — both
+   already MX-verified and rewrite-ready) and wrongly mark it `dead` in the
+   tracker, destroying real research. Fixed: `ImportError` now fails with an
+   explicit "dnspython not installed, this is NOT evidence the domain is
+   dead" message. Added `ops/tools/requirements.txt` (`dnspython`) so the fix
+   is discoverable, not just remembered.
+2. The physical-address rule was previously enforced only by the templates.md
+   doc and the operator's own discipline — no code checked for it. Preflight
+   now hard-blocks any send with no address available (checking the gitignored
+   file, then a `LOYAMEDIA_MAILING_ADDRESS` env var fallback), so a future
+   session cannot accidentally print `CLEAR` and then have no address for the
+   signature block. Re-ran `preflight.py sales@jarsofdust.com --source-verbatim`
+   after the fix: now correctly `BLOCKED` on the address gate instead of
+   printing a false `CLEAR`.
+
+**Books:** no numbers changed (0 sends, 0 bounces, 0 replies, 0 revenue).
+`ops/prospects.csv` and `ops/scoreboard.md` untouched.
+
+**Where this leaves the challenge, honestly.** The declared window closes
+today at **$0 revenue, 0 replies, 18 emails delivered** across the entire 30
+days — 7 sent in the first week (Aug 26 – Sep 1) before the mailbox went
+dark, then a total blackout: 16 days lost to a connector-less trigger
+(Sep 1–17), followed by 8 more days (Sep 19–26) where every other part of the
+pipeline worked end-to-end — inbox monitoring, bounce/reply detection,
+research, rewrites, the technical send gate — but zero sends were possible
+for lack of one file only Jose can durably supply. Net: for 24 of the 30
+days, the operation could not send mail, for two different, sequential,
+entirely fixable reasons. The one real finding that did survive in-sample
+(proof-first vs. criticism-first cold email, both at 0/N replies) is
+underpowered — 16 and 57 sends respectively is not enough volume to call the
+format itself a failure.
+
+**What actually unblocks this, if Jose wants to continue past today's
+deadline:** set a `LOYAMEDIA_MAILING_ADDRESS` environment variable on this
+environment/Routine (not a git-tracked file — those don't survive a fresh
+clone, which is exactly what erased `ops/private/sender-identity.txt` between
+every one of the last 8 daily runs). Preflight now reads that variable
+automatically the moment it exists. No other blocker is open. Notified Jose
+directly (push) given this is the deadline itself, not just another repeat
+of the same daily finding.
