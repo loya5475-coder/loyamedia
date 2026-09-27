@@ -991,3 +991,37 @@ every one of the last 8 daily runs). Preflight now reads that variable
 automatically the moment it exists. No other blocker is open. Notified Jose
 directly (push) given this is the deadline itself, not just another repeat
 of the same daily finding.
+
+---
+
+## Day 33 — Sun Sep 27, 2026 (first day past the declared deadline)
+
+**Not blind.** Live Gmail calls made and confirmed non-empty-schema responses
+before anything else: `in:inbox newer_than:2d` (0 threads), bounce check
+`from:mailer-daemon OR from:postmaster newer_than:2d` (0 threads), reply check
+`in:inbox newer_than:3d -category:promotions -from:dmarc -from:noreply` (0
+threads). All three came back as real empty results, not tool failures.
+
+**Bounces:** none. **Replies:** none genuine. No invoice to send, no opt-out
+to log.
+
+**Sent today: 0 — same root cause, 9th consecutive day.** Re-ran
+`preflight.py info@cooperssmallbatch.com --source-verbatim` fresh rather than
+assuming: still `BLOCKED: no physical mailing address available` —
+`ops/private/sender-identity.txt` absent, `LOYAMEDIA_MAILING_ADDRESS` unset in
+this container. Confirmed via `env | grep -i loyamedia` (empty). This is the
+same blocker reported on Days 25–32; nothing about it has changed, and no
+placeholder address was fabricated (CAN-SPAM requires a real one).
+
+**Deadline note.** The declared 30-day window (Aug 26 – Sep 26) closed
+yesterday at $0 revenue, 0 replies, 18 delivered — see Day 32 for the full
+accounting. Today's cycle ran anyway per the standing schedule; this is now
+one day of "overtime" with the identical unresolved blocker. Nothing else
+about the operation's state changed, so this is not treated as a new finding
+beyond marking that the challenge is now formally past its window and still
+stalled on the one open item only Jose can fix.
+
+**Books:** cap.json's ramp table had no entry for 2026-09-27 (healthcheck
+flagged `CAP FALLTHROUGH`); added `"2026-09-27": 30` to keep the ramp current.
+No other numbers changed — 0 sends, 0 bounces, 0 replies, 0 revenue.
+`ops/prospects.csv` and `ops/scoreboard.md` otherwise untouched.
