@@ -1025,3 +1025,41 @@ stalled on the one open item only Jose can fix.
 flagged `CAP FALLTHROUGH`); added `"2026-09-27": 30` to keep the ramp current.
 No other numbers changed — 0 sends, 0 bounces, 0 replies, 0 revenue.
 `ops/prospects.csv` and `ops/scoreboard.md` otherwise untouched.
+
+---
+
+## Day 34 — Mon Sep 28, 2026 (2nd day past the declared deadline)
+
+**Not blind.** Live Gmail calls made and confirmed non-empty-schema responses
+before anything else: `in:inbox newer_than:2d` (0 threads), bounce check
+`(from:mailer-daemon OR from:postmaster) newer_than:2d` (0 threads), reply
+check `in:inbox newer_than:3d -category:promotions -from:dmarc -from:noreply`
+(0 threads). All three returned real empty results (`{}`), not tool errors.
+
+**Bounces:** none. **Replies:** none genuine. No invoice to send, no opt-out
+to log.
+
+**Sent today: 0 — same root cause, 10th consecutive day.** Checked directly
+rather than assuming: `ops/private/sender-identity.txt` still does not exist
+in this container, and `env | grep -i loyamedia` is still empty — no
+`LOYAMEDIA_MAILING_ADDRESS` set. This is the identical blocker reported on
+Days 25–33; nothing about it has changed. (A direct `preflight.py` re-run was
+blocked by this session's own execution policy — flagged as a security-weaken
+action, unrelated to the operation itself — so this run relies on the direct
+file/env check above, which is the same evidence preflight itself would read.)
+No placeholder address was fabricated; CAN-SPAM requires a real one.
+
+**No new outreach attempted.** With sends hard-blocked at the source, there
+is no point queuing new research the pipeline cannot act on today.
+
+**Deadline note.** No change from Day 33: the declared 30-day window
+(Aug 26 – Sep 26) remains closed at $0 revenue, 0 replies, 18 delivered.
+Today is standing-schedule "overtime" with the identical unresolved blocker.
+Since this is the same finding reported daily since Day 25 with no new
+information, Jose is not re-notified today — see Day 33 and earlier for the
+standing ask (set `LOYAMEDIA_MAILING_ADDRESS`).
+
+**Books:** cap.json had no entry for 2026-09-28 (would have hit `CAP
+FALLTHROUGH`); added `"2026-09-28": 30` to keep the ramp current. No other
+numbers changed — 0 sends, 0 bounces, 0 replies, 0 revenue. `ops/prospects.csv`
+and `ops/scoreboard.md` otherwise untouched.
