@@ -1063,3 +1063,8 @@ standing ask (set `LOYAMEDIA_MAILING_ADDRESS`).
 FALLTHROUGH`); added `"2026-09-28": 30` to keep the ramp current. No other
 numbers changed — 0 sends, 0 bounces, 0 replies, 0 revenue. `ops/prospects.csv`
 and `ops/scoreboard.md` otherwise untouched.
+
+## 2026-09-29 15:17 UTC — Day 34 (overtime, connected run)
+Gmail verified working (inbox search returned only a Google DMARC report). Bounces: 0. Human replies: 0 (last 3d). Sends: 0 —
+preflight still blocked by missing `LOYAMEDIA_MAILING_ADDRESS` (CAN-SPAM gate, not worked around). No follow-ups or new outreach sent.
+Books: added `"2026-09-29": 30` to cap.json. Revenue $0, replies 0, unchanged. Jose not re-notified (no new information).
