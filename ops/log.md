@@ -1068,3 +1068,6 @@ and `ops/scoreboard.md` otherwise untouched.
 Gmail verified working (inbox search returned only a Google DMARC report). Bounces: 0. Human replies: 0 (last 3d). Sends: 0 —
 preflight still blocked by missing `LOYAMEDIA_MAILING_ADDRESS` (CAN-SPAM gate, not worked around). No follow-ups or new outreach sent.
 Books: added `"2026-09-29": 30` to cap.json. Revenue $0, replies 0, unchanged. Jose not re-notified (no new information).
+
+## 2026-09-30 (Day 35)
+Gmail verified live (inbox 2 DMARC reports only). 0 bounces, 0 genuine replies, 0 sends. Mailing-address gate (ops/private/sender-identity.txt) still unset (11th day). cap.json entry added. No notification (unchanged).
