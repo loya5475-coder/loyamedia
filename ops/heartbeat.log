@@ -17,3 +17,4 @@
 2026-09-28T14:15Z DEGRADED Day 34 (2nd day past deadline): Gmail verified live via 3 real calls (not blind), 0 bounces, 0 replies, 0 sends -- sender-identity/LOYAMEDIA_MAILING_ADDRESS blocker still open (10th consecutive day, unchanged); fixed cap.json FALLTHROUGH for 2026-09-28; not re-notifying Jose (same finding as Days 25-33)
 2026-09-29T15:18Z DEGRADED Day 34: Gmail OK, 0 bounces, 0 replies, 0 sends (mailing-address gate unset); cap.json updated
 2026-09-30T14:13Z DEGRADED Day 35: Gmail OK, 0 bounces, 0 replies, 0 sends (mailing-address gate unset); cap.json updated
+2026-10-02T14:13Z DEGRADED Gmail OK; 0 bounces, 0 replies, 0 sends (mailing-address gate still unset); books+cap updated

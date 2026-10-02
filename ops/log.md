@@ -1071,3 +1071,6 @@ Books: added `"2026-09-29": 30` to cap.json. Revenue $0, replies 0, unchanged. J
 
 ## 2026-09-30 (Day 35)
 Gmail verified live (inbox 2 DMARC reports only). 0 bounces, 0 genuine replies, 0 sends. Mailing-address gate (ops/private/sender-identity.txt) still unset (11th day). cap.json entry added. No notification (unchanged).
+
+## 2026-10-02 (Day 37)
+Gmail verified live (inbox 2d: 7 threads, all Google Workspace/DMARC/Apollo notices). 0 bounces, 0 genuine replies, 0 sends. Mailing-address gate (ops/private/sender-identity.txt) still unset; preflight also lacks dnspython here. Cold-start guard would clamp to 3/day (mailbox idle 14d). No outreach attempted. cap.json extended through 10-02. Revenue $0. Not re-notified (no new info).
