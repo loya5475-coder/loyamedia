@@ -18,3 +18,4 @@
 2026-09-29T15:18Z DEGRADED Day 34: Gmail OK, 0 bounces, 0 replies, 0 sends (mailing-address gate unset); cap.json updated
 2026-09-30T14:13Z DEGRADED Day 35: Gmail OK, 0 bounces, 0 replies, 0 sends (mailing-address gate unset); cap.json updated
 2026-10-02T14:13Z DEGRADED Gmail OK; 0 bounces, 0 replies, 0 sends (mailing-address gate still unset); books+cap updated
+2026-10-03T14:12Z DEGRADED Gmail live; 0 bounces, 0 human replies, 0 sends (mailing-address gate unset); PayPal MCP unauthenticated
