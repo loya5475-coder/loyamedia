@@ -86,16 +86,22 @@ heartbeat, commit it, notify Jose, and stop. Never report success while blind.
 - **If you add a status to `ops/prospects.csv`, add it to preflight's dedupe
   list.** Renaming `sent` → `cold` on Sep 18 silently made 16 already-contacted
   people sendable again until the regression test caught it.
-- **Email addresses: Apollo first, published page second, never a guess.**
-  **Apollo is LIVE and authorized** (verified Oct 2 — `josel@loyamedia.com`, 75
-  lead credits remaining, 0 used, 5,000 AI credits). Those credits are already
-  paid for, so spending them costs Jose **$0** — use them. It returns verified
-  emails, which is strictly better than scraping contact pages. Fall back to a
-  brand's own published wholesale/sales/orders page quoted verbatim in search
-  results only when Apollo has no record. **Never a guessed `firstname@` pattern** —
-  that mistake produced a 22% bounce rate on day one. Surface any Apollo
-  `mcp_credits` block to Jose, and do not let the balance hit zero on low-value
-  lookups.
+- **Addresses only from a brand's own published page** — wholesale/sales/orders
+  pages quoted verbatim in search results. Never a guessed `firstname@` pattern.
+  That mistake produced a 22% bounce rate on day one.
+- **Apollo's API is NOT usable — do not plan around it (tested Oct 5).** The
+  connector authorizes and `apollo_users_api_profile` returns real data (75 lead
+  credits, 5,000 AI credits), which makes it *look* available. It is not: the
+  account is on the **Free plan**, and both endpoints that matter return
+  `API_INACCESSIBLE` / `ENDPOINT_ACCESS_DENIED`:
+  - `api/v1/mixed_people/api_search` (prospect search) — blocked
+  - `api/v1/people/match` (email enrichment) — blocked
+
+  The credits are real but only spendable in Apollo's web UI, which an agent
+  cannot drive. **A successful profile call is not evidence of API access** — that
+  inference was made once and was wrong. Do not burn turns re-testing these two
+  endpoints unless Jose upgrades the plan. Sourcing stays WebSearch +
+  published-contact-page verbatim.
 - **Respect the ramped cap** in `ops/tools/cap.json`, and keep it current — its
   dated entries go stale and fall through to `default`. A **cold-start guard**
   in preflight clamps the cap to 3/day whenever the mailbox has been silent 7+
