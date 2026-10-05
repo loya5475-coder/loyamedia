@@ -44,6 +44,54 @@ def sender_address():
         if text:
             return text
     return os.environ.get("LOYAMEDIA_MAILING_ADDRESS", "").strip() or None
+
+
+# Placeholder tokens. Added Oct 5 after a near-miss: the documented example
+# address ("1234 Example St, Las Cruces, NM 88001") was pasted into the env var
+# verbatim, and this gate returned CLEAR for three real prospects because it
+# only checked that SOME address existed. A fabricated address in a CAN-SPAM
+# footer is a legal violation and torches sender reputation, so "is it present"
+# was never a sufficient test. It has to be plausibly real.
+PLACEHOLDER_TOKENS = (
+    "example", "placeholder", "your address", "youraddress", "street name",
+    "123 main", "1234 main", "lorem", "fake", "dummy", "tbd", "xxx",
+    "<", ">", "{", "}", "[", "]",
+)
+
+
+def address_problem(addr):
+    """Return a reason string if addr is unusable, else None."""
+    if not addr:
+        return ("no physical mailing address available -- "
+                "ops/private/sender-identity.txt is missing and "
+                "LOYAMEDIA_MAILING_ADDRESS is unset. CAN-SPAM requires a real "
+                "postal address in every commercial email. Do not send without "
+                "one; do not fabricate one. This needs Jose to set the env var "
+                "(the gitignored file does not survive a fresh clone).")
+
+    low = addr.lower()
+    for tok in PLACEHOLDER_TOKENS:
+        if tok in low:
+            return (f"mailing address looks like a PLACEHOLDER (matched {tok!r}), "
+                    f"not a real address. Sending a fabricated address in a "
+                    f"CAN-SPAM footer is illegal and would burn the domain. Ask "
+                    f"Jose to set LOYAMEDIA_MAILING_ADDRESS to his actual "
+                    f"mailing address. Never substitute an example.")
+
+    import re
+    if not re.search(r"\b\d{5}(-\d{4})?\b", addr):
+        return ("mailing address has no 5-digit ZIP code -- it does not look "
+                "like a deliverable US address. Do not send; do not invent one.")
+    if not re.search(r"\b[A-Z]{2}\b", addr):
+        return ("mailing address has no 2-letter state code -- it does not look "
+                "like a deliverable US address. Do not send; do not invent one.")
+    if not re.search(r"\d", addr.split()[0]):
+        return ("mailing address does not start with a street number -- "
+                "verify it is a real, deliverable address before sending.")
+    if len(addr) < 15:
+        return (f"mailing address is only {len(addr)} characters -- too short to "
+                f"be a complete postal address. Do not send.")
+    return None
 def daily_cap(rows=None):
     """Ramped cap from ops/tools/cap.json, clamped to 3 after a >=7 day silence.
 
@@ -122,12 +170,9 @@ def main():
     except Exception as e:
         fail(f"no MX record for {domain} ({type(e).__name__}) -- dead domain")
 
-    if not sender_address():
-        fail("no physical mailing address available -- ops/private/sender-identity.txt "
-             "is missing and LOYAMEDIA_MAILING_ADDRESS is unset. CAN-SPAM requires a "
-             "real postal address in every commercial email. Do not send without one; "
-             "do not fabricate one. This needs Jose to set the env var (the gitignored "
-             "file does not survive a fresh clone).")
+    problem = address_problem(sender_address())
+    if problem:
+        fail(problem)
 
     if "--source-verbatim" not in sys.argv:
         fail("missing --source-verbatim: attest the address was copied "
