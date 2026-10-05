@@ -2,17 +2,26 @@
 
 **Read this before doing anything else in this repo.**
 
-A 30-day revenue challenge is running here: **Aug 26 → Sep 26, 2026.** Loya Media
+A 30-day revenue challenge is running here: **RESTARTED — Oct 2 → Nov 2, 2026.**
+Round 1 (Aug 26 – Sep 26) finished at **$0.00**. Sep 26 is NOT the deadline any
+more; do not treat the challenge as closed. Loya Media
 is a real content agency (loyamedia.com) with a live site, a $150–$2,000 product
 ladder, a business Gmail, and PayPal. The operation sells its copywriting by cold
 outreach that delivers finished work before asking for money.
 
-## First action in any session: check staleness
+## First action in any session: install deps, then check staleness
 
 ```bash
+pip install -q -r ops/tools/requirements.txt   # REQUIRED: fresh clones lack dnspython
 tail -40 ops/log.md          # what actually happened last
 date -u                      # how long ago that was
 ```
+
+**Do not skip the pip install.** Every scheduled run starts from a fresh clone
+with no site-packages, so `preflight.py` fails its MX check with
+`BLOCKED: dnspython not installed` — which looks like a dead domain but is not.
+Same class of bug as the mailing-address gap: anything not in the repo does not
+survive the clone. If a gate blocks, check the environment before the prospect.
 
 Better: run the health check, which does this and more:
 
@@ -77,9 +86,16 @@ heartbeat, commit it, notify Jose, and stop. Never report success while blind.
 - **If you add a status to `ops/prospects.csv`, add it to preflight's dedupe
   list.** Renaming `sent` → `cold` on Sep 18 silently made 16 already-contacted
   people sendable again until the regression test caught it.
-- **Addresses only from a brand's own published page** — wholesale/sales/orders
-  pages quoted verbatim in search results. Never a guessed `firstname@` pattern.
-  That mistake produced a 22% bounce rate on day one.
+- **Email addresses: Apollo first, published page second, never a guess.**
+  **Apollo is LIVE and authorized** (verified Oct 2 — `josel@loyamedia.com`, 75
+  lead credits remaining, 0 used, 5,000 AI credits). Those credits are already
+  paid for, so spending them costs Jose **$0** — use them. It returns verified
+  emails, which is strictly better than scraping contact pages. Fall back to a
+  brand's own published wholesale/sales/orders page quoted verbatim in search
+  results only when Apollo has no record. **Never a guessed `firstname@` pattern** —
+  that mistake produced a 22% bounce rate on day one. Surface any Apollo
+  `mcp_credits` block to Jose, and do not let the balance hit zero on low-value
+  lookups.
 - **Respect the ramped cap** in `ops/tools/cap.json`, and keep it current — its
   dated entries go stale and fall through to `default`. A **cold-start guard**
   in preflight clamps the cap to 3/day whenever the mailbox has been silent 7+
@@ -91,9 +107,15 @@ heartbeat, commit it, notify Jose, and stop. Never report success while blind.
 - **Never fabricate a metric, testimonial, or result.** Every number in the
   scoreboard must be checkable against Gmail message IDs, bounce notices, or
   PayPal. Log the bad days too — a scoreboard nobody audits is worth nothing.
-- **Never commit the mailing address.** It lives in gitignored
-  `ops/private/sender-identity.txt` and is injected only at send time. This repo
-  is public.
+- **Never commit the mailing address.** This repo is public and the address is
+  Jose's. Read it from the **`LOYAMEDIA_MAILING_ADDRESS` environment variable**,
+  which is the only durable source: `ops/private/sender-identity.txt` is
+  gitignored and therefore CANNOT survive the fresh clone every scheduled run
+  starts from. That gap cost Days 25–40 — 0 sends every single day.
+  **Never fabricate or guess an address to get past this.** CAN-SPAM requires a
+  real one; inventing it is illegal and would burn the domain. If the variable is
+  unset, write it in the heartbeat and send nothing — refusing is correct. Do not
+  re-notify Jose daily with the same finding.
 - **Do not scrape GitHub commit emails** for outreach. Considered and rejected
   on Aug 27 — see `ops/outreach/apollo-playbook.md`.
 
@@ -116,7 +138,7 @@ heartbeat, commit it, notify Jose, and stop. Never report success while blind.
 ## Scheduler (since Sep 18 — send gap CLOSED)
 
 **Live Routine: `trig_01HK2ZEMbueLKMSp9TTcyVwM`** — "Loya Media — outreach cycle
-(connected)", fires **daily at 23:00 UTC**. Created from the claude.ai Routines
+(connected)", fires **daily at 14:00 UTC** (`0 14 * * *`). Created from the claude.ai Routines
 UI, so it carries real connectors: **Gmail and PayPal are attached and verified**
 (`mcp_connections` is populated; PayPal read access confirmed Sep 18). It can
 send mail and raise invoices. Push notifications on.
@@ -152,12 +174,29 @@ routines they created` from `update_trigger`. The UI exposes a single time
 picker, not a cron field — Jose reported he cannot enter multiple run times, so
 do not keep asking for `0 14,17,20,23 * * *`.
 
-The ask that actually matters is **moving the one run from 23:00 to 14:00 UTC**.
-23:00 UTC is 5pm Mountain: cold mail landing at end of day, the worst slot for
-B2B open rates. 14:00 UTC is 8am Mountain — lands in the morning inbox and still
-sweeps overnight replies. One field, big delta. He edits it at
-https://claude.ai/code/routines/trig_01HK2ZEMbueLKMSp9TTcyVwM
+**The 14:00 UTC ask is CLOSED.** Verified Oct 5 via `list_triggers`: the cron is
+already `0 14 * * *`. Do not ask Jose to move it again.
 
-And keep this in proportion: at 21 sends and 0 replies, reply *latency* is not
-the bottleneck. Response rate is. Do not spend Jose's attention on scheduling
-when the offer is the open question.
+And keep this in proportion: reply *latency* is not the bottleneck. Response rate
+is. Do not spend Jose's attention on scheduling when the offer is the open question.
+
+## Round 1 result — read this before planning Round 2 outreach
+
+**Final: $0.00 revenue, 0 replies, $0.00 spent.** Two separate failures, and only
+one was plumbing:
+
+| Format | Delivered | Human replies |
+|---|---|---|
+| Proof-first (finished rewrite up front) | 16 | **0** |
+| Criticism-first (inherited campaign) | 57 | **0** (1 unsubscribe) |
+
+**73 delivered, 0 replies.** Both formats converted at zero in-sample. So a
+perfectly-running month of the same playbook still forecasts ~$0. Cold email to
+small e-commerce brands offering copywriting is the **automated baseline only** —
+it runs in the background because it is cheap, not because it works.
+
+**Round 2 must test channels where the buyer is already looking to pay** rather
+than strangers being interrupted. Do not quietly fall back to grinding cold
+volume because it is the path the tooling already supports. If a new channel is
+tried and fails, log that too — a negative result is a real result, but repeating
+a known-zero one is not.
