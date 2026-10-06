@@ -21,3 +21,4 @@
 2026-10-03T14:12Z DEGRADED Gmail live; 0 bounces, 0 human replies, 0 sends (mailing-address gate unset); PayPal MCP unauthenticated
 2026-10-04T14:12Z DEGRADED Gmail live; 0 bounces, 0 human replies, 0 sends (mailing-address gate unset); PayPal MCP unauthenticated; cap.json updated
 2026-10-05T14:13Z DEGRADED Gmail live; 0 bounces/replies/sends; address gate still unset, no outreach; cap.json extended
+2026-10-06T14:13Z DEGRADED Gmail live; 0 bounces/replies/sends; address env var unset, no outreach; cap.json extended
