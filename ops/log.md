@@ -1249,3 +1249,31 @@ today's two. Cap tomorrow is 8. Queue is empty — new prospect research is the
 next job. 16 `cold` rows still hold an unsent breakup touch that preflight
 blocks with no override; CLAUDE.md policy already permits exactly one such
 touch, so gate and policy disagree. Still not mine to self-authorize.
+
+### Prospect research, Oct 7 — 0 queued, both candidates rejected
+
+Searched for small-batch food brands with wholesale pages. Four surfaced
+(Goodlands Food, Craic Sauce, Wozz! Kitchen Creations, Small Batch Jam Co.).
+Evaluated the two strongest:
+
+- **Craic Sauce** (Lowell MA, fermented sauces, community kitchen — genuinely
+  good story, strong fit). Contact Brian Ruhlmann, phone 978-505-8173, 15 Warren
+  St. **No email surfaced anywhere.** Not queued. Guessing `info@` or
+  `brian@` is the exact mistake that produced the 22% bounce rate on day one.
+- **Wozz! Kitchen Creations** (Warrick Dowsett & Ashley Thompson, 2x sofi
+  winners). `sales@wozzkitchencreations.com` appeared in two searches — but both
+  resolved to the same aggregator directories (vtfarmtoplate, nombase), never to
+  the brand's own page. Two searches hitting one source is not two independent
+  sources. There is also an unresolved location conflict: one source says
+  Bethlehem NH, another 140 Junction Road, Hardwick VT. **Not queued.**
+
+**0 new prospects queued.** This is the Notary Ceramics precedent from Sep 18:
+when sourcing is ambiguous, not queueing is the correct outcome, and a thin
+queue is cheaper than a bounce. The mailbox is the entire revenue channel and it
+is 1 day into a re-warm from 34 days dark — this is the worst possible moment to
+spend reputation on an unverified address.
+
+Note for the next run: both brands are reachable, just not by a verifiably
+published email. Craic Sauce in particular is worth a retry with a different
+search angle (their Faire brand page, or a press contact). Do not downgrade the
+standard to clear the queue.
