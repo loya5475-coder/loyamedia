@@ -52,6 +52,26 @@ heartbeat did not happen.
    - Opt-out → T6, add to `ops/outreach/do-not-contact.txt`, never contact again
 3. **Follow-ups due** per `ops/prospects.csv`: T2 at +4 days, T3 at +9 days,
    in-thread. Nothing after T3 — three touches, then the thread closes.
+
+   **Follow-ups need `--followup-in-thread`** (authorized by Jose, Oct 7):
+   ```bash
+   python3 ops/tools/preflight.py <email> --source-verbatim --followup-in-thread
+   ```
+   Without it, `sent` and `cold` rows hard-block and **no follow-up can ever be
+   sent** — that was the state until Oct 7, which meant all 73 round-1 emails got
+   one touch each when the playbook called for three. The flag is narrow: a first
+   cold touch still blocks without it, `touch >= 3` is closed forever, `dead` is
+   absolute, and address/MX/cap checks are unchanged.
+
+   **The send MUST be an actual reply in the existing thread** — pass
+   `replyThreadId` to Gmail. Find the thread with
+   `in:sent to:<email>`. A new standalone email to someone already contacted is a
+   second stranger-pitch from one address; that is what the flag exists to avoid,
+   not to enable.
+
+   After sending T3, set `touch=3` and leave the status as-is. Do **not** invent
+   a `closed` status — `touch >= 3` already closes the row permanently, and a new
+   status would need adding to preflight's dedupe list.
 4. **New outreach.** Research via WebSearch, write a real rewrite of that brand's
    actual copy *before* contact, then send T1.
 5. **Books.** Update `ops/prospects.csv`, `ops/scoreboard.md`, `ops/log.md` with

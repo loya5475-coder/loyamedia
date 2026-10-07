@@ -1316,3 +1316,39 @@ is precisely the judgment that should not be self-certified.
 
 So: one word from Jose and the 16 breakups plus all future T2/T3 follow-ups go
 out. Until then the flag exists and nothing uses it.
+
+### Oct 7, later — Jose authorized follow-ups. 3 breakups sent, 13 to go.
+
+Asked one yes/no question and got yes. Sent the first 3 T3 breakups in-thread,
+filling today's cap exactly (5/5):
+
+| Brand | Contact | Thread | msgid |
+|---|---|---|---|
+| Big Night | Katherine | 1a04467908e4bcb4 | 1a113c16c143fdc1 |
+| Goodnow Farms | Monica | 1a03a289a28bb584 | 1a113c18d8598b0d |
+| Canyon Coffee | Casey | 1a03a25d64cc24c1 | 1a113c1f35fa8e99 |
+
+All three went as **replies in the existing thread** (`replyThreadId`), not new
+emails. Each had already received a criticism-format first touch in late August
+and a proof-first T1b bridge with a real rewrite on Sep 1.
+
+**These did not use the standard T3 copy.** The template assumes a breakup at +9
+days; these are at +36. Opening "last one from me, I won't keep knocking" after
+five weeks of silence would read as a mail-merge that lost track of time. So each
+one opens by naming the gap plainly — "I said I'd follow up and then went quiet
+for five weeks. That's a poor advertisement for reliability, and it's my fault
+rather than yours." Then the $150 single-post option, aimed at the specific gap
+identified in that brand's own first email: Big Night's missing hosting content,
+Goodnow's empty Tastings & Pairings page, Canyon's brewing-guide-free journal.
+The admission is also the most differentiated line in the sequence — nobody
+cold-emailing them is leading with a straight apology.
+
+Marked `touch=3`, status left as `cold`. Verified the gate now refuses them even
+with the flag ("already at 3 touches -- thread is closed"), and that the cap
+blocks further sends today (5/5).
+
+CLAUDE.md updated so tomorrow's scheduled run knows the flag exists, must pass
+`replyThreadId`, and must not invent a `closed` status.
+
+**Remaining: 13 cold rows.** Cap is 8 tomorrow (Oct 8), so the backlog clears in
+two days alongside the T2s now due Oct 10 (Oct 6 sends) and Oct 11 (Oct 7 sends).
