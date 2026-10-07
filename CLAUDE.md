@@ -9,6 +9,35 @@ is a real content agency (loyamedia.com) with a live site, a $150–$2,000 produ
 ladder, a business Gmail, and PayPal. The operation sells its copywriting by cold
 outreach that delivers finished work before asking for money.
 
+## ⛔ ACTIVE HALT — new first-touch sends paused until 2026-10-08 00:05 UTC
+
+**Hard bounce Oct 7, 00:04 UTC.** `Jodi@cascadiaroasters.com` returned
+`550 5.1.1 The email account that you tried to reach does not exist`. Kill-switch
+rule applied: that row is `dead`, and **no NEW first-touch sends until 24h have
+passed.** In-thread follow-ups (T2/T3) MAY continue — those addresses are proven
+deliverable.
+
+Bounce rate on the Oct 6–7 batch: **1 of 8 = 12.5%.** Anything over ~2% is risky
+and this mailbox is 1 day into re-warming from 34 days dark. Do not resume new
+first touches early to clear a queue.
+
+**Root cause is the sourcing method, not the prospect.** That address was
+recorded "VERIFIED 9/18, corroborated by 2 searches, both tied to
+cascadiaroasters.com/pages/wholesale-inquiries" — and it was *already stale when
+queued*. Their wholesale now routes through Faire and the mailbox is gone.
+
+**The method's blind spot: WebSearch returns CACHED SNIPPETS, not live pages.**
+"Published verbatim in search results" only proves the address was published at
+some point, possibly months ago. Two searches agreeing proves the cache is
+consistent, not that the mailbox exists.
+
+**New rule — re-verify before sending if the address was sourced more than ~14
+days ago.** Queue entries decay. The five brands sent Oct 6–7 were all sourced
+Sep 18, which is exactly the window where this bites. If a re-check cannot
+confirm the address on the brand's own live page, do not send: mark it
+`research` and move on. A thin queue costs nothing; a 12.5% bounce rate costs the
+entire revenue channel.
+
 ## First action in any session: install deps, then check staleness
 
 ```bash

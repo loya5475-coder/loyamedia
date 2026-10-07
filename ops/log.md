@@ -1352,3 +1352,58 @@ CLAUDE.md updated so tomorrow's scheduled run knows the flag exists, must pass
 
 **Remaining: 13 cold rows.** Cap is 8 tomorrow (Oct 8), so the backlog clears in
 two days alongside the T2s now due Oct 10 (Oct 6 sends) and Oct 11 (Oct 7 sends).
+
+### Oct 7, 00:44 UTC — scheduled bounce check: 1 HARD BOUNCE, kill-switch applied
+
+The self-scheduled check fired and found what it was set to find.
+
+**Hard bounce.** `Jodi@cascadiaroasters.com`:
+```
+550 5.1.1 The email account that you tried to reach does not exist.
+Status: 5.1.1 · Remote-MTA: gmr-smtp-in.l.google.com
+```
+Permanent, nonexistent mailbox. Domain MX resolves fine (Google), so preflight's
+MX check passed correctly — MX proves the domain accepts mail, never that a
+specific mailbox exists. There is no free way to prove the latter short of
+sending.
+
+Actions taken per the kill-switch rule:
+- Cascadia marked `dead`, outcome recorded, will not be retried
+- **New first-touch sends halted until Oct 8 00:05 UTC.** In-thread T2/T3
+  follow-ups continue — those addresses are proven deliverable
+- Halt written to the top of CLAUDE.md so the scheduled run cannot miss it
+
+**Bounce rate on the Oct 6–7 batch: 1 of 8 = 12.5%.** Over ~2% is risky. This
+mailbox is one day into re-warming after 34 days dark, so this is the worst
+possible moment for it.
+
+#### Root cause is my sourcing method, not this prospect
+
+That address carried the strongest verification note in the tracker: "VERIFIED
+9/18, corroborated by 2 independent searches, both tied to
+cascadiaroasters.com/pages/wholesale-inquiries." It still bounced, because it was
+**already stale when it was queued**. Re-checked just now: the address no longer
+appears on their site at all; their wholesale routes through Faire.
+
+**The blind spot: WebSearch returns cached snippets, not live page reads.**
+"Published verbatim in search results" only establishes that an address was
+published at some point. Two searches agreeing establishes that the cache is
+consistent — not that the mailbox exists. I had treated corroboration as
+freshness, and those are different properties.
+
+New rule added to CLAUDE.md: re-verify any address sourced more than ~14 days
+ago before sending; if a re-check can't confirm it on the brand's own live page,
+move the row to `research` rather than send. All five brands mailed Oct 6–7 were
+sourced Sep 18 — precisely the decay window. The remaining four have not bounced,
+so the queue was mostly good, but 1-in-8 is not an acceptable rate to design for.
+
+#### The other inbox item is NOT a reply
+
+`katherine@shopbignight.com` auto-replied: on parental leave, away from email,
+team covering. Logged as an auto-reply with no interest signal — it is not a T5
+trigger and must not be counted as a reply in the scoreboard. It does confirm
+the address is live. She is closed at touch 3; no further contact. Noting also
+that a cold pitch landing on someone's parental leave is a reminder that the
+person on the other end has a life the tracker knows nothing about.
+
+**Running totals: 8 sent, 1 hard bounce, 1 auto-reply, 0 human replies, $0.00.**
