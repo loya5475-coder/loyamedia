@@ -1165,3 +1165,87 @@ Reverted, and CLAUDE.md now forbids it explicitly.
 **Next:** check bounces in 30–60 min per the kill-switch rule. T2 follow-ups
 due Oct 10 (+4 days). 16 `cold` rows still carry an unsent breakup touch and
 remain blocked by preflight with no override — still Jose's call, not mine.
+
+---
+
+## Oct 7, 2026 — Round 2 Day 6: 2 more sends, Upwork assets built, cap ramp rebuilt
+
+**Sent 2 of today's cap of 5:**
+
+| Brand | Address | Format | Gmail msgid |
+|---|---|---|---|
+| Cascadia Coffee Roasters | Jodi@cascadiaroasters.com | T1c hook (wholesale page) | 1a113acdcd24d445 |
+| Smart Cookie Barkery | woof@smartcookietreats.com | T1c hook (About page) | 1a113acf7b255ccc |
+
+Both preflighted CLEAR. Cascadia was addressed to Jodi as the **wholesale
+contact** — the founders are Jason and Susan Thomas, and the tracker's original
+"OWNER-NAMED email" note was wrong. Smart Cookie opened on the wooden tricycle,
+not the two cancer diagnoses: both are published on their own About page, but
+leading a cold email with a stranger's illness would be mining it. The tricycle
+is just as true and just as arresting.
+
+That clears the prepped queue. 5 sent in 2 days, 0 bounces, 0 replies.
+
+**Bookkeeping correction:** yesterday I recorded variants A/B against two T1c
+sends. T1c holds the body in reserve and asks "want me to send it?" — it carries
+no price, so the A/B ask test does not apply to it. Logged as n/a going forward.
+The A/B test only has meaning across T1 full-rewrite sends.
+
+### cap.json rebuilt — a live deliverability risk, not housekeeping
+
+The ramp still described a Sep 18 restart with 30/day from Sep 26 onward. **Zero
+emails were sent on any of those days.** Those numbers documented a warm-up that
+never happened, and with them in place today fell through to `default: 10` —
+a 3 -> 10 jump the day after an 18-day silence, which is what Gmail's velocity
+filters are built to catch. Jose's one standing instruction is that the domain
+must not get flagged.
+
+Rebuilt from the 3 actually sent on Oct 6: 3/5/8/12/16/20/24/28/30, dated
+through Nov 2, and `default` lowered 10 -> 5 so a stale file is conservative
+instead of reckless.
+
+### Upwork assets written — `ops/upwork/`
+
+Account created and email-verified Oct 5; blocked only on Jose's ID
+verification. Rather than wait, both deliverables are written and final:
+
+- `profile.md` — title, $28/hr rate, full overview, portfolio selections, skills
+- `proposals.md` — 4 templates (products / website / SEO post / email sequence),
+  a screening checklist, and the Connects budget
+
+Rate is sourced, not guessed: copywriter median $30/hr, Upwork open-market
+median $25/hr across 1,974 copywriting postings, 43% of hourly roles under $25.
+$28 sits just under median — credible with no reviews, without signalling
+bargain-bin.
+
+**No claimed clients, results or testimonials anywhere in those files**, and a
+note in each telling future operators not to add any. Revenue is $0.00 and
+there are no past clients; the samples are real and are the entire proof base.
+Portfolio pieces are to be labelled "spec sample — not a client project."
+
+### Writer networks: investigated and REJECTED on integrity grounds
+
+Content platforms that recruit freelance writers looked like the Upwork dynamic
+without Upwork — buyers actively looking to pay writers, applications free.
+Checked their policies first:
+
+- **ContentWriters** — strictly prohibits writers using AI or LLMs to assist
+- **Verblio** — AI-generated submissions mean restriction, suspension or a ban
+- **Draft** — AI permitted for research only, never in the final submission
+- Detection (Originality.ai, GPTZero, Copyleaks) is standard QC in 2026
+
+Loya Media's production is AI-assisted. Applying to these networks and
+submitting the work would be fraud against an explicit contractual term, so the
+channel is closed — not "deprioritised." Added to the Upwork screening
+checklist: skip any posting requiring human-written-only copy.
+
+**Flagged for Jose, not decided here:** our emails say "I rewrote your page" in
+his voice. True of the business; a buyer could read it as him personally. No
+client has asked and no term has been breached, but it is his name and his
+videos, so how to position AI authorship is his call, not mine.
+
+**Next:** T2 follow-ups due Oct 10 (+4 days) for the Oct 6 three, Oct 11 for
+today's two. Cap tomorrow is 8. Queue is empty — new prospect research is the
+next job. 16 `cold` rows still hold an unsent breakup touch that preflight
+blocks with no override; CLAUDE.md policy already permits exactly one such
+touch, so gate and policy disagree. Still not mine to self-authorize.
