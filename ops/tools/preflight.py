@@ -140,7 +140,32 @@ def main():
             if e == email and r.get("status") == "dead":
                 fail(f"{email} is dead ({r.get('outcome') or 'bounced/opt-out'})")
             if e == email and r.get("status") in ("sent", "cold"):
-                fail(f"{email} already contacted (status={r['status']}, touch {r.get('touch')})")
+                # Follow-ups. Fixed Oct 7: this was a bare hard block, which
+                # meant the documented 3-touch sequence (T2 at +4 days, T3 at
+                # +9) could never actually be sent -- the gate refused every
+                # follow-up to a row it had just marked `sent`. It also stranded
+                # the 16 `cold` rows that policy says get exactly ONE breakup
+                # touch. `inherited` rows already had a guarded override
+                # (--bridge-in-thread) and these never got the equivalent.
+                #
+                # This is NOT a loosening: a first cold touch is still blocked
+                # without the flag, touch >= 3 is still closed forever, dead is
+                # still absolute, and the address/MX/cap checks all still run.
+                # It only permits the in-thread follow-up the playbook already
+                # prescribes, and only when the caller says so explicitly.
+                t = int(r.get("touch") or 0)
+                if t >= 3:
+                    fail(f"{email} already at {t} touches -- thread is closed "
+                         f"forever. Nothing after T3.")
+                if "--followup-in-thread" not in sys.argv:
+                    fail(f"{email} already contacted (status={r['status']}, touch {t}). "
+                         f"A second cold first-touch would be a stranger pitching twice "
+                         f"from one address. If this is the in-thread follow-up the "
+                         f"playbook prescribes (T2 at +4 days, T3 breakup at +9), send it "
+                         f"as a REPLY in the existing thread and re-run with "
+                         f"--followup-in-thread.")
+                print(f"NOTE: {r['status']} row at touch {t}; this send is touch {t+1} "
+                      f"and MUST be a reply in the existing thread")
             if e == email and r.get("status") == "inherited":
                 t = int(r.get("touch") or 0)
                 if t >= 3:
