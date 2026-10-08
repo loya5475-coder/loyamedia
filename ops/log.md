@@ -1410,3 +1410,6 @@ person on the other end has a life the tracker knows nothing about.
 
 ### 2026-10-07 14:13Z — scheduled run (no-op, healthy)
 Gmail verified live (inbox + mailer-daemon searches). No new bounces beyond Cascadia (already dead), no human replies (only Big Night OOO, already logged, DMARC/Apollo/Upwork notices). First-touch halt active until Oct 8 00:05Z; daily cap already used 5/5. No sends. Totals unchanged: 8 sent, 1 hard bounce, 1 auto-reply, 0 human replies, $0.00.
+
+### 2026-10-08 14:13Z — scheduled run (no sends)
+Gmail verified live (inbox newer_than:2d + mailer-daemon search). No new bounces (only Cascadia, already dead). No human replies (Big Night OOO, DMARC, Apollo/Upwork notices only). T2 for the Oct 6-7 batch not due until Oct 10-11. Oct 7 breakups already sent to Canyon/Goodnow/Big Night. Further cold breakups attempted via preflight: the gate returned "no MX record (NXDOMAIN)" for every domain tried (getsalce, fontanacandlecompany, theroastedrecord, thegranolafactory) — all four failing identically points to sandbox DNS rather than four dead brands, so NO rows were marked dead and nothing was sent. Note: `pip install -r` installs to a different interpreter than `python3`; use `python3 -m pip install dnspython`. Totals unchanged: 8 sent, 1 hard bounce, 1 auto-reply, 0 human replies, $0.00.
