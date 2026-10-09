@@ -193,7 +193,27 @@ def main():
     try:
         dns.resolver.resolve(domain, "MX", lifetime=8)
     except Exception as e:
-        fail(f"no MX record for {domain} ({type(e).__name__}) -- dead domain")
+        # Control probe, added Oct 9. If a domain that certainly has MX records
+        # also fails, the resolver is broken and this says nothing about the
+        # prospect. Without this probe the gate reported "dead domain" for every
+        # address -- including gmail.com -- and the scheduled runs on Oct 8 and
+        # Oct 9 sent nothing while blaming the prospects.
+        dns_broken = False
+        try:
+            dns.resolver.resolve("gmail.com", "MX", lifetime=8)
+        except Exception:
+            dns_broken = True
+
+        if dns_broken:
+            fail(f"DNS IS UNAVAILABLE IN THIS ENVIRONMENT -- the control probe for "
+                 f"gmail.com also failed ({type(e).__name__}). This says NOTHING about "
+                 f"{domain}; do NOT mark this prospect dead and do NOT re-source the "
+                 f"address. The MX gate cannot run here. Causes seen: the sandbox "
+                 f"resolver returning NXDOMAIN for everything, and the network policy "
+                 f"denying DNS-over-HTTPS (dns.google:443 -> 403). Escalate the policy "
+                 f"decision -- do not self-authorize sending with the MX check skipped.")
+        fail(f"no MX record for {domain} ({type(e).__name__}) -- dead domain. "
+             f"(DNS itself is working: the gmail.com control probe succeeded.)")
 
     problem = address_problem(sender_address())
     if problem:
