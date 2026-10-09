@@ -1416,3 +1416,48 @@ Gmail verified live (inbox newer_than:2d + mailer-daemon search). No new bounces
 
 ### 2026-10-09 scheduled run (no sends)
 Gmail verified live (inbox newer_than:2d, mailer-daemon/postmaster newer_than:2d, inbox newer_than:3d). No new bounces (only Cascadia, already dead). No human replies (Big Night OOO, Apollo/Upwork notices only). First-touch halt expired Oct 8 00:05Z. T2s for Oct 6-7 batch not due until Oct 10-11. Sandbox DNS still broken (even gmail.com MX returns NXDOMAIN), so preflight's MX check cannot pass; gate not bypassed, no new outreach sent. Totals unchanged: 8 sent, 1 hard bounce, 1 auto-reply, 0 human replies, $0.00.
+
+### Oct 9 — two dead days. Cause: the sandbox has no DNS at all.
+
+Scheduled runs fired on schedule Oct 7, 8 and 9 and left heartbeats, so the
+scheduler is healthy. But Oct 8 and Oct 9 sent **zero**, both logging "preflight
+DNS check returns NXDOMAIN for all domains."
+
+Confirmed first-hand today, every route tested:
+
+| Route | Result |
+|---|---|
+| `dns.resolver` for `gmail.com` | **NXDOMAIN** — obviously wrong |
+| `dns.resolver` for any prospect domain | NXDOMAIN |
+| DNS-over-HTTPS, `dns.google:443` | **403** at the proxy (policy denial) |
+| Direct HTTPS to a brand site | **403** CONNECT at the proxy |
+| `WebFetch` to anthropic.com | works (server-side) |
+| `WebFetch` to a brand domain | ENOTFOUND |
+
+So the MX gate cannot run in this environment, and no substitute check is
+reachable from inside the container.
+
+Fixed the misdiagnosis: preflight now control-probes `gmail.com` on any MX
+failure, and if that fails too it reports DNS as unavailable and explicitly
+tells the operator not to mark the prospect dead or re-source the address. It
+still blocks. Same reasoning as Oct 6: skipping a deliverability check is a risk
+decision about the only revenue channel, and the operator does not authorize that
+for itself.
+
+**Ground truth that matters more than any pre-send check:** 7 of the 8 emails
+sent Oct 6–7 have had **no bounce after three days**. They were delivered. The
+queue was sound apart from Cascadia. Delivery is better evidence than MX ever
+was — and note MX would not have caught Cascadia either, since that domain's MX
+resolved fine and the *mailbox* was what didn't exist.
+
+**The narrow decision now open.** The 13 remaining T3 breakups go to addresses
+that have already received mail from this mailbox successfully. For those, prior
+delivery already proves the domain accepts mail, so the MX check is redundant
+rather than skipped. That is a much tighter exemption than "ignore MX," and it
+unblocks the whole follow-up backlog without touching first-touch sends. Put to
+Jose as one yes/no; not self-authorized.
+
+Also noted: a resolver that answers NXDOMAIN for gmail.com has now cost 2 days.
+That is the fourth environment fault to masquerade as a data problem (dnspython
+missing, address env var, stale cached address, now DNS). The pattern is worth
+naming: **when a gate blocks, suspect the environment before the prospect.**
