@@ -1461,3 +1461,8 @@ Also noted: a resolver that answers NXDOMAIN for gmail.com has now cost 2 days.
 That is the fourth environment fault to masquerade as a data problem (dnspython
 missing, address env var, stale cached address, now DNS). The pattern is worth
 naming: **when a gate blocks, suspect the environment before the prospect.**
+
+## 2026-10-10 14:12Z scheduled run
+- Gmail live (in:inbox newer_than:2d returned 2 vendor mails: Apollo, Upwork). No bounces (mailer-daemon/postmaster, 2d). No human replies. No PayPal action.
+- No sends: T2 follow-ups due Oct 10-11 but preflight MX gate cannot run (sandbox DNS NXDOMAIN even for gmail.com; control probe fails). Kept BLOCKING, not self-authorized to skip. Note: use /usr/bin/python3 for preflight here (python3 on PATH is 3.11 without dnspython).
+- Still awaiting Jose's yes/no on MX exemption for in-thread follow-ups (asked Oct 9). Not re-notified.
