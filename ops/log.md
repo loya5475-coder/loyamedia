@@ -1471,3 +1471,8 @@ naming: **when a gate blocks, suspect the environment before the prospect.**
 - Gmail live (in:inbox newer_than:2d: 2 Apollo promo mails). No bounces (mailer-daemon/postmaster, 2d). No human replies (3d search: only an Apollo vendor mail). No PayPal action.
 - No sends: preflight MX gate still BLOCKED, sandbox DNS NXDOMAIN incl. gmail.com control probe. Not self-authorized to skip. Awaiting Jose yes/no on MX exemption for in-thread follow-ups (asked Oct 9); not re-notified.
 - Sends today: 0. Revenue: $0.00.
+
+## 2026-10-12 14:15Z scheduled run
+- Gmail live (in:inbox newer_than:2d: Prospeo credit alert, Google DMARC report, 2 Apollo promos). No bounces (2d). No human replies (3d). No PayPal action.
+- No sends: preflight MX gate still BLOCKED (sandbox DNS NXDOMAIN incl. gmail.com control). Not self-authorized to skip. Jose's yes/no on the in-thread follow-up MX exemption (asked Oct 9) still unanswered; not re-notified.
+- Sends today: 0. Revenue: $0.00.
