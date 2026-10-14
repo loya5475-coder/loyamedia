@@ -1585,3 +1585,10 @@ the environment's Network access configuration.
 
 **State: 4 emails written, threads located, zero sendable. 9 rows need
 re-sourcing as fresh first touches, not breakups. 20 days left, $0.00.**
+
+### 2026-10-14 (scheduled run)
+Gmail verified (inbox search OK). Bounces: 0. Human replies: 0 (only DMARC/Workspace notices). Sends: 0.
+preflight.py BLOCKED every send: container has no DNS (control probe gmail.com NXDOMAIN; dns.google denied),
+so the MX gate cannot run. Did not bypass. Fix = environment network policy (allow DNS / dns.google:443).
+Note: `pip install` targeted a different interpreter; use `python3 -m pip install dnspython`.
+Pipeline idle 7d; $0.00.
