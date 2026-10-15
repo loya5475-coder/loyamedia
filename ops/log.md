@@ -1592,3 +1592,8 @@ preflight.py BLOCKED every send: container has no DNS (control probe gmail.com N
 so the MX gate cannot run. Did not bypass. Fix = environment network policy (allow DNS / dns.google:443).
 Note: `pip install` targeted a different interpreter; use `python3 -m pip install dnspython`.
 Pipeline idle 7d; $0.00.
+
+### 2026-10-15 (scheduled run)
+Gmail verified (inbox search OK, 3 threads: DMARC/Workspace notices only). Bounces: 0. Human replies: 0. Sends: 0.
+preflight.py still BLOCKED: container DNS NXDOMAIN incl. gmail.com control (dnspython installed via python3 -m pip). No bypass.
+Unchanged blocker since Oct 8: environment network policy must allow DNS. Pipeline idle 8d; $0.00.
