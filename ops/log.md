@@ -1597,3 +1597,7 @@ Pipeline idle 7d; $0.00.
 Gmail verified (inbox search OK, 3 threads: DMARC/Workspace notices only). Bounces: 0. Human replies: 0. Sends: 0.
 preflight.py still BLOCKED: container DNS NXDOMAIN incl. gmail.com control (dnspython installed via python3 -m pip). No bypass.
 Unchanged blocker since Oct 8: environment network policy must allow DNS. Pipeline idle 8d; $0.00.
+
+### 2026-10-16 (scheduled run)
+Gmail verified (inbox search OK, 3 threads: DMARC/Workspace notices only). Bounces: 0. Human replies: 0. Sends: 0.
+preflight.py still BLOCKED: no DNS in container (gmail.com control fails). No bypass. Same blocker as Oct 8-15: environment network policy must allow DNS. Pipeline idle 9d; $0.00.
