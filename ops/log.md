@@ -1601,3 +1601,7 @@ Unchanged blocker since Oct 8: environment network policy must allow DNS. Pipeli
 ### 2026-10-16 (scheduled run)
 Gmail verified (inbox search OK, 3 threads: DMARC/Workspace notices only). Bounces: 0. Human replies: 0. Sends: 0.
 preflight.py still BLOCKED: no DNS in container (gmail.com control fails). No bypass. Same blocker as Oct 8-15: environment network policy must allow DNS. Pipeline idle 9d; $0.00.
+
+### 2026-10-17 (scheduled run)
+Gmail verified (inbox search OK, 1 thread: DMARC report only). Bounces: 0. Human replies: 0. Sends: 0.
+No DNS in container (gmail.com lookup fails), so preflight MX gate cannot pass. No bypass. Same blocker as Oct 8-16: environment network policy must allow DNS. Pipeline idle 10d; $0.00.
