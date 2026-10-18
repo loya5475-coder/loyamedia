@@ -1605,3 +1605,7 @@ preflight.py still BLOCKED: no DNS in container (gmail.com control fails). No by
 ### 2026-10-17 (scheduled run)
 Gmail verified (inbox search OK, 1 thread: DMARC report only). Bounces: 0. Human replies: 0. Sends: 0.
 No DNS in container (gmail.com lookup fails), so preflight MX gate cannot pass. No bypass. Same blocker as Oct 8-16: environment network policy must allow DNS. Pipeline idle 10d; $0.00.
+
+### 2026-10-18 (scheduled run)
+Gmail verified (inbox search OK, 2 threads: Apollo promo + Workspace promo only). Bounces: 0. Human replies: 0. Sends: 0.
+Container still has no DNS (gmail.com lookup fails), so the preflight MX gate cannot pass. No bypass. Same blocker as Oct 8-17: environment network policy must allow DNS. Pipeline idle 11d; $0.00.
