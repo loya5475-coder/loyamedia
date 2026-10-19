@@ -1609,3 +1609,7 @@ No DNS in container (gmail.com lookup fails), so preflight MX gate cannot pass. 
 ### 2026-10-18 (scheduled run)
 Gmail verified (inbox search OK, 2 threads: Apollo promo + Workspace promo only). Bounces: 0. Human replies: 0. Sends: 0.
 Container still has no DNS (gmail.com lookup fails), so the preflight MX gate cannot pass. No bypass. Same blocker as Oct 8-17: environment network policy must allow DNS. Pipeline idle 11d; $0.00.
+
+### 2026-10-19 (scheduled run)
+Gmail verified (inbox search OK, 2 threads: Apollo promo + Workspace promo only). Bounces: 0. Human replies: 0. Sends: 0.
+Container still has no DNS (gmail.com lookup fails; preflight BLOCKED), so the MX gate cannot pass. No bypass. Same blocker as Oct 8-18: environment network policy must allow DNS. Pipeline idle 12d; $0.00.
