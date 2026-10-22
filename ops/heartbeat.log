@@ -44,3 +44,4 @@
 2026-10-19T14:11Z DEGRADED Oct 19: Gmail OK; 0 bounces, 0 human replies; 0 sends - no DNS in container so preflight MX gate cannot pass (blocker since Oct 8); no bypass
 2026-10-20T14:08Z DEGRADED Oct 20: Gmail OK; 0 bounces, 0 human replies; 0 sends - no DNS in container so preflight MX gate cannot pass (blocker since Oct 8); no bypass
 2026-10-21T14:13Z DEGRADED Oct 21: Gmail OK; 0 bounces, 0 human replies; 0 sends - no DNS in container so preflight MX gate cannot pass (blocker since Oct 8); no bypass
+2026-10-22T14:17Z DEGRADED Oct 22: Gmail OK; 0 bounces, 0 human replies; 0 sends - no DNS in container so preflight MX gate cannot pass (blocker since Oct 8); no bypass
