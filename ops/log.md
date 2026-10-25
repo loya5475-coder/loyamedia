@@ -1633,3 +1633,7 @@ Container still has no DNS (gmail.com MX lookup NXDOMAIN even with dnspython ins
 ### 2026-10-24 (scheduled run)
 Gmail verified (inbox search OK, 0 threads in 2d). Bounces: 0. Human replies: 0. Sends: 0.
 Container still has no DNS (getent gmail.com fails; preflight BLOCKED), so the MX gate cannot pass. No bypass. Same blocker as Oct 8-23: environment network policy must allow DNS. Pipeline idle 17d; $0.00.
+
+### 2026-10-25 (scheduled run)
+Gmail verified (inbox search OK, 1 thread: Apollo promo only). Bounces: 0. Human replies: 0. Sends: 0.
+Container still has no DNS (getent gmail.com fails; preflight BLOCKED), so the MX gate cannot pass. No bypass. Same blocker as Oct 8-24: environment network policy must allow DNS. Pipeline idle 18d; $0.00.
