@@ -1637,3 +1637,7 @@ Container still has no DNS (getent gmail.com fails; preflight BLOCKED), so the M
 ### 2026-10-25 (scheduled run)
 Gmail verified (inbox search OK, 1 thread: Apollo promo only). Bounces: 0. Human replies: 0. Sends: 0.
 Container still has no DNS (getent gmail.com fails; preflight BLOCKED), so the MX gate cannot pass. No bypass. Same blocker as Oct 8-24: environment network policy must allow DNS. Pipeline idle 18d; $0.00.
+
+### 2026-10-26 (scheduled run)
+Gmail verified (inbox search OK, 1 thread: Apollo promo only). Bounces: 0. Human replies: 0. Sends: 0.
+Container still has no DNS (getent gmail.com fails; preflight BLOCKED), so the MX gate cannot pass. No bypass. Same blocker as Oct 8-25: environment network policy must allow DNS. Pipeline idle 19d; $0.00.
