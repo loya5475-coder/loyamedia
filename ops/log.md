@@ -1645,3 +1645,7 @@ Container still has no DNS (getent gmail.com fails; preflight BLOCKED), so the M
 ### 2026-10-27 (scheduled run)
 Gmail verified (inbox search OK, 0 threads in 2d). Bounces: 0. Human replies: 0. Sends: 0.
 Container still has no DNS (getent gmail.com fails; dnspython not installed), so the preflight MX gate cannot pass. No bypass. Same blocker as Oct 8-26: environment network policy must allow DNS. Only `ready` row (HAB Sauce) has no verified address. Pipeline idle 20d; $0.00.
+
+### 2026-10-28 (scheduled run)
+Gmail verified (inbox search OK, 0 threads in 2d). Bounces: 0. Human replies: 0. Sends: 0.
+Container still has no DNS (getent gmail.com fails; dnspython not importable), so the preflight MX gate cannot pass. No bypass. Same blocker as Oct 8-27: environment network policy must allow DNS. Pipeline idle 21d; $0.00.

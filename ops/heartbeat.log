@@ -50,3 +50,4 @@
 2026-10-25T14:07Z DEGRADED Oct 25: Gmail OK; 0 bounces, 0 human replies; 0 sends - no DNS in container so preflight MX gate blocked (day 18 idle)
 2026-10-26T14:17Z DEGRADED DEGRADED Oct 26: Gmail OK; 0 bounces, 0 human replies; 0 sends - no DNS in container so preflight MX gate blocked (day 19 idle)
 2026-10-27T14:43Z DEGRADED Oct 27: Gmail OK; 0 bounces, 0 human replies; 0 sends - no DNS in container so preflight MX gate blocked (day 20 idle)
+2026-10-28T14:09Z DEGRADED DEGRADED Oct 28: Gmail OK; 0 bounces, 0 human replies; 0 sends - no DNS in container so preflight MX gate blocked (day 21 idle)
