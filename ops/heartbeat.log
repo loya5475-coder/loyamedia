@@ -52,3 +52,4 @@
 2026-10-27T14:43Z DEGRADED Oct 27: Gmail OK; 0 bounces, 0 human replies; 0 sends - no DNS in container so preflight MX gate blocked (day 20 idle)
 2026-10-28T14:09Z DEGRADED DEGRADED Oct 28: Gmail OK; 0 bounces, 0 human replies; 0 sends - no DNS in container so preflight MX gate blocked (day 21 idle)
 2026-10-29T14:40Z DEGRADED Gmail OK, 0 bounces, 0 replies, 0 sends; preflight blocked by no DNS/dnspython (idle 22d)
+2026-10-30T14:23Z DEGRADED Oct 30: Gmail OK; 0 bounces, 0 human replies (only Apollo marketing mail); 0 sends - preflight MX gate blocked, container DNS NXDOMAIN even for gmail.com (also default python3 lacks dnspython; /usr/bin/python3 has it). Idle 23d.

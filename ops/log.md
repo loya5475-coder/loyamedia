@@ -1653,3 +1653,8 @@ Container still has no DNS (getent gmail.com fails; dnspython not importable), s
 ### 2026-10-29 (scheduled run)
 Gmail verified (inbox search OK, 1 thread: Apollo promo only). Bounces: 0. Human replies: 0. Sends: 0.
 Container still has no DNS/pip (getent gmail.com fails; dnspython not importable), so the preflight MX gate cannot pass. No bypass. Same blocker as Oct 8-28: environment network policy must allow DNS/PyPI. Pipeline idle 22d; $0.00.
+
+## 2026-10-30 (Fri) run
+- Gmail OK. Bounces: 0. Human replies: 0 (only Apollo marketing). Follow-ups/new outreach: none sent.
+- Blocker: preflight MX gate cannot run. Container DNS returns NXDOMAIN for all names incl. gmail.com control probe. Also /usr/local/bin/python3 lacks dnspython; use /usr/bin/python3. Gate not bypassed.
+- Fix needs Jose: allow DNS / DoH in environment network policy. Sends: 0, idle 23d.
